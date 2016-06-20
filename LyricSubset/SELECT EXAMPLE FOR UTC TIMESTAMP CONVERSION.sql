@@ -1,0 +1,1 @@
+SELECT datetime(UpdatedAt, 'localtime') AS UpdatedAt FROM ArpaBetWord

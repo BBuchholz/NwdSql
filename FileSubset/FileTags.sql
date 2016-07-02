@@ -2,30 +2,30 @@
 -- statements should be run by itself (one big statement fails)
 
 -- table
-CREATE TABLE FileTags (
-	FileTagsId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
+CREATE TABLE FileTag (
+	FileTagId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	FileId INTEGER NOT NULL REFERENCES File (FileId), 
 	TagId INTEGER NOT NULL REFERENCES Tag (TagId),
-	FileTagsCreatedAt TEXT NOT NULL,
-	FileTagsUpdatedAt TEXT NOT NULL, 
+	FileTagCreatedAt TEXT NOT NULL,
+	FileTagUpdatedAt TEXT NOT NULL, 
 	UNIQUE(FileId, TagId)
 )
 
 -- updated at trigger
-CREATE TRIGGER SetFileTagsUpdatedAt
-AFTER UPDATE ON FileTags
+CREATE TRIGGER SetFileTagUpdatedAt
+AFTER UPDATE ON FileTag
 BEGIN
-UPDATE FileTags 
-	SET FileTagsUpdatedAt = CURRENT_TIMESTAMP
-	WHERE FileTags.FileTagsId = NEW.FileTagsId;
+UPDATE FileTag 
+	SET FileTagUpdatedAt = CURRENT_TIMESTAMP
+	WHERE FileTag.FileTagId = NEW.FileTagId;
 END
 
 -- created at & updated at trigger
-CREATE TRIGGER SetFileTagsCreatedAt 
-AFTER INSERT ON FileTags
+CREATE TRIGGER SetFileTagCreatedAt 
+AFTER INSERT ON FileTag
 BEGIN
-UPDATE FileTags 
-	SET FileTagsCreatedAt = CURRENT_TIMESTAMP, 
-		   FileTagsUpdatedAt = CURRENT_TIMESTAMP
-	WHERE FileTags.FileTagsId = NEW.FileTagsId;
+UPDATE FileTag 
+	SET FileTagCreatedAt = CURRENT_TIMESTAMP, 
+		   FileTagUpdatedAt = CURRENT_TIMESTAMP
+	WHERE FileTag.FileTagId = NEW.FileTagId;
 END

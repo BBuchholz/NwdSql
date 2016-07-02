@@ -4,7 +4,6 @@
 -- table
 CREATE TABLE AudioTranscript (
 	AudioTranscriptId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	FileId INTEGER NOT NULL REFERENCES File (FileId), 
 	AudioTranscriptValue TEXT,
 	AudioTranscriptCreatedAt TEXT NOT NULL,
 	AudioTranscriptUpdatedAt TEXT NOT NULL, 

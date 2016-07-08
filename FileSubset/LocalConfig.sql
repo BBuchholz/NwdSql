@@ -29,4 +29,3 @@ UPDATE LocalConfig
 		   LocalConfigUpdatedAt = CURRENT_TIMESTAMP
 	WHERE LocalConfig.LocalConfigId = NEW.LocalConfigId;
 END
-)

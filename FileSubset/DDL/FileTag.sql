@@ -6,6 +6,8 @@ CREATE TABLE FileTag (
 	FileTagId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	FileId INTEGER NOT NULL REFERENCES File (FileId), 
 	TagId INTEGER NOT NULL REFERENCES Tag (TagId),
+	FileTagTaggedAt TEXT NOT NULL,
+	FileTagUntaggedAt TEXT,
 	FileTagCreatedAt TEXT NOT NULL,
 	FileTagUpdatedAt TEXT NOT NULL, 
 	UNIQUE(FileId, TagId)
@@ -26,6 +28,7 @@ AFTER INSERT ON FileTag
 BEGIN
 UPDATE FileTag 
 	SET FileTagCreatedAt = CURRENT_TIMESTAMP, 
-		   FileTagUpdatedAt = CURRENT_TIMESTAMP
+		   FileTagUpdatedAt = CURRENT_TIMESTAMP,
+		   FileTagTaggedAt = CURRENT_TIMESTAMP
 	WHERE FileTag.FileTagId = NEW.FileTagId;
 END

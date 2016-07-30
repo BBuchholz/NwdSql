@@ -5,6 +5,8 @@
 CREATE TABLE AudioTranscript (
 	AudioTranscriptId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	AudioTranscriptValue TEXT,
+	AudioTranscriptBeginTime TEXT, 
+	AudioTranscriptEndTime Text, 
 	AudioTranscriptCreatedAt TEXT NOT NULL,
 	AudioTranscriptUpdatedAt TEXT NOT NULL, 
 	UNIQUE(AudioTranscriptValue)

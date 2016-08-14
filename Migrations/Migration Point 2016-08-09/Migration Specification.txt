@@ -1,0 +1,9 @@
+Migration defined: 2016-08-14
+
+This migration is intended to:
+
+	- Break Hash relationship out of the File table and into it's own table (FileHash) to support multiple hashes for a given file, and multiple files for a given hash (many-to-many relationship)
+
+	- Simplify the Device table to only include DeviceId and DeviceDescription, the current implementation with the additional columns is a remanent of the MTP sync code that is scheduled to be deprecated as time allows (development is abandoned, but existing code is not offically marked Obsolete.) It has become evident that the simplified table structure is sufficient for our purposes
+
+	- Bring a unified data model to both our desktop (C#) and mobile (Java) platforms. To this end, the DDL statements, queries and contract classes are intended to be mirrors of one another.

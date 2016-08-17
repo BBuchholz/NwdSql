@@ -9,8 +9,8 @@ CREATE TABLE File (
 	DisplayNameId INTEGER REFERENCES DisplayName (DisplayNameId), 
 	FileDescription TEXT, 
 	FileName TEXT,
-	FileCreatedAt TEXT NOT NULL,
-	FileUpdatedAt TEXT NOT NULL,  
+	FileCreatedAt TEXT,
+	FileUpdatedAt TEXT,  
 	UNIQUE(DeviceId, PathId)
 )
 

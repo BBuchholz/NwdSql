@@ -5,8 +5,8 @@
 CREATE TABLE LyricBit (
 	LyricBitId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	LyricBitValue TEXT NOT NULL UNIQUE,
-	LyricBitCreatedAt TEXT NOT NULL,
-	LyricBitUpdatedAt TEXT NOT NULL
+	LyricBitCreatedAt TEXT,
+	LyricBitUpdatedAt TEXT
 )
 
 -- updated at trigger

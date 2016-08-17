@@ -5,8 +5,8 @@
 CREATE TABLE ArpaBetWord (
 	ArpaBetWordId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	ArpaBetWordValue TEXT NOT NULL UNIQUE,
-	ArpaBetWordCreatedAt TEXT NOT NULL,
-	ArpaBetWordUpdatedAt TEXT NOT NULL
+	ArpaBetWordCreatedAt TEXT,
+	ArpaBetWordUpdatedAt TEXT
 )
 
 -- updated at trigger

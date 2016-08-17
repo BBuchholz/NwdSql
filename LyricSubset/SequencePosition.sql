@@ -7,8 +7,8 @@ CREATE TABLE SequencePosition (
 	LyricSequenceId INTEGER NOT NULL REFERENCES LyricSequence(LyricSequenceId), 
 	LyricBitId INTEGER NOT NULL REFERENCES LyricBit(LyricBitId), 
 	SequencePosition INTEGER NOT NULL, 
-	SequencePositionCreatedAt TEXT NOT NULL, 
-	SequencePositionUpdatedAt TEXT NOT NULL,
+	SequencePositionCreatedAt, 
+	SequencePositionUpdatedAt,
 	UNIQUE(LyricSequenceId, LyricBitId, SequencePosition)  
 )
 

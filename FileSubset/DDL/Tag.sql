@@ -5,8 +5,8 @@
 CREATE TABLE Tag (
 	TagId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	TagValue TEXT NOT NULL UNIQUE,
-	TagCreatedAt TEXT NOT NULL,
-	TagUpdatedAt TEXT NOT NULL
+	TagCreatedAt TEXT,
+	TagUpdatedAt TEXT
 )
 
 -- updated at trigger

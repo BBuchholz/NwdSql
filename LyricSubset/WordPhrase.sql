@@ -5,8 +5,8 @@
 CREATE TABLE WordPhrase (
 	WordPhraseId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	WordPhraseValue TEXT NOT NULL UNIQUE,
-	WordPhraseCreatedAt TEXT NOT NULL,
-	WordPhraseUpdatedAt TEXT NOT NULL
+	WordPhraseCreatedAt TEXT,
+	WordPhraseUpdatedAt TEXT
 )
 
 -- updated at trigger

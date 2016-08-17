@@ -6,8 +6,8 @@ CREATE TABLE LyricPhrase (
 	LyricPhraseId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	LyricBitId INTEGER NOT NULL REFERENCES LyricBit(LyricBitId), 
 	WordPhraseId INTEGER NOT NULL REFERENCES WordPhrase(WordPhraseId), 
-	LyricPhraseCreatedAt TEXT NOT NULL, 
-	LyricPhraseUpdatedAt TEXT NOT NULL,
+	LyricPhraseCreatedAt TEXT, 
+	LyricPhraseUpdatedAt TEXT,
 	UNIQUE(LyricBitId, WordPhraseId)  
 ) 
 

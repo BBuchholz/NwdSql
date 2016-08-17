@@ -5,8 +5,8 @@
 CREATE TABLE Path (
 	PathId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	PathValue TEXT NOT NULL UNIQUE,
-	PathCreatedAt TEXT NOT NULL,
-	PathUpdatedAt TEXT NOT NULL
+	PathCreatedAt TEXT,
+	PathUpdatedAt TEXT
 )
 
 -- updated at trigger

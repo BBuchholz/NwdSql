@@ -5,8 +5,8 @@
 CREATE TABLE Device (
 	DeviceId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	DeviceDescription TEXT NOT NULL UNIQUE,
-	DeviceCreatedAt TEXT NOT NULL,
-	DeviceUpdatedAt TEXT NOT NULL
+	DeviceCreatedAt TEXT,
+	DeviceUpdatedAt TEXT
 )
 
 -- updated at trigger

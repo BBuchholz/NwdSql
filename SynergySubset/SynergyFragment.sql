@@ -6,8 +6,8 @@ CREATE TABLE SynergyFragment (
 	SynergyFragmentId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	SynergyListId INTEGER NOT NULL REFERENCES SynergyList (SynergyListId), 
 	SynergyItemId INTEGER NOT NULL REFERENCES SynergyItem (SynergyItemId),
-	SynergyFragmentCreatedAt TEXT NOT NULL,
-	SynergyFragmentUpdatedAt TEXT NOT NULL, 
+	SynergyFragmentCreatedAt TEXT,
+	SynergyFragmentUpdatedAt TEXT, 
 	UNIQUE(SynergyListId, SynergyItemId, SynergyFragmentCreatedAt)
 )
 

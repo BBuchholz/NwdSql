@@ -9,8 +9,8 @@ CREATE TABLE SynergyToDo (
 	SynergyToDoActivatedAt TEXT NOT NULL,
 	SynergyToDoCompletedAt TEXT,
 	SynergyToDoArchivedAt TEXT,
-	SynergyToDoCreatedAt TEXT NOT NULL,
-	SynergyToDoUpdatedAt TEXT NOT NULL, 
+	SynergyToDoCreatedAt TEXT,
+	SynergyToDoUpdatedAt TEXT, 
 	UNIQUE(SynergyListId, SynergyItemId, SynergyToDoCreatedAt)
 )
 

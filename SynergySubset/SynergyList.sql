@@ -7,8 +7,8 @@ CREATE TABLE SynergyList (
 	SynergyListName TEXT NOT NULL UNIQUE,
 	SynergyListActivatedAt TEXT NOT NULL,
 	SynergyListShelvedAt TEXT,
-	SynergyListCreatedAt TEXT NOT NULL,
-	SynergyListUpdatedAt TEXT NOT NULL
+	SynergyListCreatedAt TEXT,
+	SynergyListUpdatedAt TEXT
 )
 
 -- updated at trigger

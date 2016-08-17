@@ -6,8 +6,8 @@ CREATE TABLE Transcription (
 	TranscriptionId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	FileId INTEGER NOT NULL REFERENCES File (FileId), 
 	AudioTranscriptId INTEGER NOT NULL REFERENCES AudioTranscript (AudioTranscriptId),
-	TranscriptionCreatedAt TEXT NOT NULL,
-	TranscriptionUpdatedAt TEXT NOT NULL, 
+	TranscriptionCreatedAt TEXT,
+	TranscriptionUpdatedAt TEXT, 
 	UNIQUE(FileId, AudioTranscriptId)
 )
 

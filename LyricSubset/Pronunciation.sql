@@ -6,8 +6,8 @@ CREATE TABLE Pronunciation (
 	PronunciationId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	ArpaBetWordId INTEGER NOT NULL REFERENCES ArpaBetWord(ArpaBetWordId), 
 	WordPhraseId INTEGER NOT NULL REFERENCES WordPhrase(WordPhraseId), 
-	PronunciationCreatedAt TEXT NOT NULL, 
-	PronunciationUpdatedAt TEXT NOT NULL,
+	PronunciationCreatedAt TEXT, 
+	PronunciationUpdatedAt TEXT,
 	UNIQUE(ArpaBetWordId, WordPhraseId) 
 )
 

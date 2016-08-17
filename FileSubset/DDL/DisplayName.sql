@@ -5,8 +5,8 @@
 CREATE TABLE DisplayName (
 	DisplayNameId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	DisplayNameValue TEXT NOT NULL UNIQUE,
-	DisplayNameCreatedAt TEXT NOT NULL,
-	DisplayNameUpdatedAt TEXT NOT NULL
+	DisplayNameCreatedAt TEXT,
+	DisplayNameUpdatedAt TEXT
 )
 
 -- updated at trigger

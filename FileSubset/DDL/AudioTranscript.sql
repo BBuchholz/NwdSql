@@ -7,9 +7,9 @@ CREATE TABLE AudioTranscript (
 	AudioTranscriptValue TEXT,
 	AudioTranscriptBeginTime TEXT, 
 	AudioTranscriptEndTime Text, 
-	AudioTranscriptCreatedAt TEXT NOT NULL,
-	AudioTranscriptUpdatedAt TEXT NOT NULL, 
-	UNIQUE(AudioTranscriptValue)
+	AudioTranscriptCreatedAt TEXT,
+	AudioTranscriptUpdatedAt TEXT, 
+	UNIQUE(AudioTranscriptValue, AudioTranscriptBeginTime, AudioTranscriptEndTime)
 )
 
 -- updated at trigger

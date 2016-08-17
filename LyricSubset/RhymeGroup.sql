@@ -4,8 +4,8 @@
 -- table
 CREATE TABLE RhymeGroup (
 	RhymeGroupId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
-	RhymeGroupCreatedAt TEXT NOT NULL, 
-	RhymeGroupUpdatedAt TEXT NOT NULL 
+	RhymeGroupCreatedAt TEXT, 
+	RhymeGroupUpdatedAt TEXT 
 )
 
 -- updated at trigger

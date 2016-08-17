@@ -5,8 +5,8 @@
 CREATE TABLE LyricSequence (
 	LyricSequenceId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	LyricSequenceDescription TEXT, 
-	LyricSequenceCreatedAt TEXT NOT NULL, 
-	LyricSequenceUpdatedAt TEXT NOT NULL 
+	LyricSequenceCreatedAt TEXT, 
+	LyricSequenceUpdatedAt TEXT 
 )
 
 -- updated at trigger

@@ -6,8 +6,8 @@ CREATE TABLE FileHash (
 	FileHashId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	FileId INTEGER NOT NULL REFERENCES File (FileId), 
 	HashId INTEGER NOT NULL REFERENCES Hash (HashId),
-	FileHashCreatedAt TEXT NOT NULL,
-	FileHashUpdatedAt TEXT NOT NULL, 
+	FileHashCreatedAt TEXT,
+	FileHashUpdatedAt TEXT, 
 	UNIQUE(FileId, HashId)
 )
 

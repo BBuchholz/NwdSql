@@ -5,8 +5,8 @@
 CREATE TABLE SynergyItem (
 	SynergyItemId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	SynergyItemValue TEXT NOT NULL UNIQUE,
-	SynergyItemCreatedAt TEXT NOT NULL,
-	SynergyItemUpdatedAt TEXT NOT NULL
+	SynergyItemCreatedAt TEXT,
+	SynergyItemUpdatedAt TEXT
 )
 
 -- updated at trigger

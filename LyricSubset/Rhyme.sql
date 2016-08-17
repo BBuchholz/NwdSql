@@ -6,8 +6,8 @@ CREATE TABLE Rhyme (
 	RhymeId INTEGER PRIMARY KEY NOT NULL UNIQUE, 
 	RhymeGroupId INTEGER NOT NULL REFERENCES RhymeGroup(RhymeGroupId), 
 	WordPhraseId INTEGER NOT NULL REFERENCES WordPhrase(WordPhraseId), 
-	RhymeCreatedAt TEXT NOT NULL, 
-	RhymeUpdatedAt TEXT NOT NULL,
+	RhymeCreatedAt TEXT, 
+	RhymeUpdatedAt TEXT,
 	UNIQUE(RhymeGroupId, WordPhraseId)  
 )
 

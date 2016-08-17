@@ -6,8 +6,8 @@ CREATE TABLE LocalConfig (
 	LocalConfigId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	LocalConfigKey TEXT NOT NULL UNIQUE, 
 	LocalConfigValue TEXT,
-	LocalConfigCreatedAt TEXT NOT NULL,
-	LocalConfigUpdatedAt TEXT NOT NULL,
+	LocalConfigCreatedAt TEXT,
+	LocalConfigUpdatedAt TEXT,
 	UNIQUE(LocalConfigKey, LocalConfigValue)
 )
 

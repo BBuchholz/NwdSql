@@ -5,8 +5,8 @@
 CREATE TABLE Hash (
 	HashId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	HashValue TEXT NOT NULL UNIQUE,
-	HashCreatedAt TEXT NOT NULL,
-	HashUpdatedAt TEXT NOT NULL
+	HashCreatedAt TEXT,
+	HashUpdatedAt TEXT
 )
 
 -- updated at trigger

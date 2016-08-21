@@ -4,14 +4,13 @@
 -- table
 CREATE TABLE SynergyToDo (
 	SynergyToDoId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SynergyListId INTEGER NOT NULL REFERENCES SynergyList (SynergyListId), 
-	SynergyItemId INTEGER NOT NULL REFERENCES SynergyItem (SynergyItemId),
+	SynergyListItemId INTEGER NOT NULL REFERENCES SynergyListItem (SynergyListItemId), 
 	SynergyToDoActivatedAt TEXT NOT NULL,
 	SynergyToDoCompletedAt TEXT,
 	SynergyToDoArchivedAt TEXT,
 	SynergyToDoCreatedAt TEXT,
 	SynergyToDoUpdatedAt TEXT, 
-	UNIQUE(SynergyListId, SynergyItemId, SynergyToDoCreatedAt)
+	UNIQUE(SynergyListItemId, SynergyToDoCreatedAt)
 )
 
 -- updated at trigger

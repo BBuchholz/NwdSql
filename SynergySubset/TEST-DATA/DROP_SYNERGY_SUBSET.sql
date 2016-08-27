@@ -1,4 +1,4 @@
--- DROP all tables in Synergy Subset
+-- DROP all tables in SYNERGY SUBSET
 
 DROP TABLE SynergyItem;
 DROP TABLE SynergyList;

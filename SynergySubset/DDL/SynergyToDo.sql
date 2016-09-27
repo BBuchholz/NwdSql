@@ -5,6 +5,7 @@
 CREATE TABLE SynergyToDo (
 	SynergyToDoId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	SynergyListItemId INTEGER NOT NULL REFERENCES SynergyListItem (SynergyListItemId), 
+	SynergyToDoPostion INTEGER,
 	SynergyToDoActivatedAt TEXT NOT NULL,
 	SynergyToDoCompletedAt TEXT,
 	SynergyToDoArchivedAt TEXT,

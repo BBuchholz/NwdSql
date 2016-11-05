@@ -2,26 +2,30 @@
 -- statements should be run by itself (one big statement fails)
 
 -- table
-"CREATE TABLE SynergyItem ("
-+ "	SynergyItemId INTEGER NOT NULL PRIMARY KEY UNIQUE,  "
-+ "	SynergyItemValue TEXT NOT NULL UNIQUE, "
-+ "	SynergyItemCreatedAt TEXT, "
-+ "	SynergyItemUpdatedAt TEXT "
+"CREATE TABLE " + TABLE_SYNERGY_ITEM + " ("
++ COLUMN_SYNERGY_ITEM_ID + " INTEGER NOT NULL PRIMARY KEY UNIQUE,  "
++ COLUMN_SYNERGY_ITEM_VALUE + " TEXT NOT NULL UNIQUE, "
++ COLUMN_SYNERGY_ITEM_CREATED_AT + " TEXT, "
++ COLUMN_SYNERGY_ITEM_UPDATED_AT + " TEXT "
 + ") "
 
-"CREATE TRIGGER SetSynergyItemUpdatedAt "
-+ "AFTER UPDATE ON SynergyItem "
+"CREATE TRIGGER Set" + TABLE_SYNERGY_ITEM + "UpdatedAt "
++ "AFTER UPDATE ON " + TABLE_SYNERGY_ITEM + " "
 + "BEGIN "
-+ "UPDATE SynergyItem  "
-+ "	SET SynergyItemUpdatedAt = CURRENT_TIMESTAMP "
-+ "	WHERE SynergyItem.SynergyItemId = NEW.SynergyItemId; "
++ "UPDATE " + TABLE_SYNERGY_ITEM + "  "
++ "	SET " + COLUMN_SYNERGY_ITEM_UPDATED_AT + " = CURRENT_TIMESTAMP "
++ "	WHERE " + TABLE_SYNERGY_ITEM + "." + COLUMN_SYNERGY_ITEM_ID + " = NEW." + COLUMN_SYNERGY_ITEM_ID + "; "
 + "END "
 
-"CREATE TRIGGER SetSynergyItemCreatedAt  "
-+ "AFTER INSERT ON SynergyItem "
+"CREATE TRIGGER Set" + TABLE_SYNERGY_ITEM + "CreatedAt  "
++ "AFTER INSERT ON " + TABLE_SYNERGY_ITEM + " "
 + "BEGIN "
-+ "UPDATE SynergyItem  "
-+ "	SET SynergyItemCreatedAt = CURRENT_TIMESTAMP,  "
-+ "		   SynergyItemUpdatedAt = CURRENT_TIMESTAMP "
-+ "	WHERE SynergyItem.SynergyItemId = NEW.SynergyItemId; "
++ "UPDATE " + TABLE_SYNERGY_ITEM + "  "
++ "	SET " + COLUMN_SYNERGY_ITEM_CREATED_AT + " = CURRENT_TIMESTAMP,  "
++ "		   " + COLUMN_SYNERGY_ITEM_UPDATED_AT + " = CURRENT_TIMESTAMP "
++ "	WHERE " + TABLE_SYNERGY_ITEM + "." + COLUMN_SYNERGY_ITEM_ID + " = NEW." + COLUMN_SYNERGY_ITEM_ID + "; "
 + "END "
+
+
+
+

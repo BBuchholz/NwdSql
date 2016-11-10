@@ -5,7 +5,7 @@
 CREATE TABLE SynergyList (
 	SynergyListId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	SynergyListName TEXT NOT NULL UNIQUE,
-	SynergyListActivatedAt TEXT NOT NULL,
+	SynergyListActivatedAt TEXT, 
 	SynergyListShelvedAt TEXT,
 	SynergyListCreatedAt TEXT,
 	SynergyListUpdatedAt TEXT

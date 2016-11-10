@@ -5,10 +5,11 @@
 CREATE TABLE SynergyListItem (
 	SynergyListItemId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	SynergyListId INTEGER NOT NULL REFERENCES SynergyList (SynergyListId), 
-	SynergyItemId INTEGER NOT NULL REFERENCES SynergyItem (SynergyItemId),
+	SynergyItemId INTEGER NOT NULL REFERENCES SynergyItem (SynergyItemId), 
+	SynergyListItemPostion INTEGER, 
 	SynergyListItemCreatedAt TEXT,
 	SynergyListItemUpdatedAt TEXT, 
-	UNIQUE(SynergyListId, SynergyItemId, SynergyListItemCreatedAt)
+	UNIQUE(SynergyListId, SynergyItemId)
 )
 
 -- updated at trigger

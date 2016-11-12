@@ -2,7 +2,7 @@
 -- statements should be run by itself (one big statement fails)
 
 -- table
-CREATE TABLE Device (
+CREATE TABLE MediaDevice (
 	MediaDeviceId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	MediaDeviceDescription TEXT NOT NULL UNIQUE,
 	MediaDeviceCreatedAt TEXT,

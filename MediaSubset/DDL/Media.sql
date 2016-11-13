@@ -1,27 +1,15 @@
 -- due to differences regarding sqlite, each of these
 -- statements should be run by itself (one big statement fails)
 
-
-
-
--- READ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
--- MODS FOR MEDIA SUBSET SHOULD BE MADE BEFORE ANY OF THESE ARE RUN
--- SEE DESKTOP AND MOBILE NOTES
--- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
-
 -- table
 CREATE TABLE Media (
 	MediaId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	MediaDeviceId INTEGER NOT NULL REFERENCES MediaDevice (MediaDeviceId), 
-	PathId INTEGER NOT NULL REFERENCES Path (PathId), 
-	MediaDescription TEXT, 
 	MediaFileName TEXT,
+	MediaDescription TEXT, 
+	MediaHash TEXT, 
 	MediaCreatedAt TEXT,
 	MediaUpdatedAt TEXT,  
-	UNIQUE(MediaDeviceId, PathId)
+	UNIQUE(MediaHash)
 )
 
 -- updated at trigger

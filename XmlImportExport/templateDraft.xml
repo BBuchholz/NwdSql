@@ -1,0 +1,20 @@
+<nwd>
+	<mediaSubset>
+		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709' tags='tag1, tag2'/>	
+	</mediaSubset>
+	<synergySubset>
+		<synergyList listName='TestList' activatedAt='2016-11-01 09:24:00' shelvedAt='2015-01-01 13:24:00'>
+			<synergyItem position='0'>
+				<itemValue>
+					some item text for testing
+				</itemValue>
+			</synergyItem>
+			<synergyItem position='1'>
+				<itemValue>
+					a todo item for testing
+				</itemValue>
+				<toDo activatedAt='2016-10-31 13:13:13' completedAt='' archivedAt=''/>
+			</synergyItem>
+		</synergyList>
+	</synergySubset>
+</nwd>

@@ -4,13 +4,9 @@
 -- table
 CREATE TABLE MediaTag (
 	MediaTagId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	MediaId INTEGER NOT NULL REFERENCES Media (MediaId), 
-	TagId INTEGER NOT NULL REFERENCES Tag (TagId),
-	MediaTagTaggedAt TEXT,
-	MediaTagUntaggedAt TEXT,
+	MediaTagValue TEXT NOT NULL UNIQUE,
 	MediaTagCreatedAt TEXT,
-	MediaTagUpdatedAt TEXT, 
-	UNIQUE(MediaId, TagId)
+	MediaTagUpdatedAt TEXT
 )
 
 -- updated at trigger
@@ -28,7 +24,6 @@ AFTER INSERT ON MediaTag
 BEGIN
 UPDATE MediaTag 
 	SET MediaTagCreatedAt = CURRENT_TIMESTAMP, 
-		   MediaTagUpdatedAt = CURRENT_TIMESTAMP,
-		   MediaTagTaggedAt = CURRENT_TIMESTAMP
+		   MediaTagUpdatedAt = CURRENT_TIMESTAMP
 	WHERE MediaTag.MediaTagId = NEW.MediaTagId;
 END

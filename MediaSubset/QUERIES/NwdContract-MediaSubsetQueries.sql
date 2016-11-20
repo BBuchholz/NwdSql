@@ -1,0 +1,27 @@
+-- INSERT_INTO_MEDIA_ROOT
+"INSERT OR IGNORE INTO " + NwdContract.TABLE_MEDIA_ROOT + " " 
++ "	(" + NwdContract.COLUMN_MEDIA_DEVICE_ID + ", " + NwdContract.COLUMN_MEDIA_ROOT_PATH + ") " 
++ "VALUES " 
++ "	(?, ?); " 
+
+-- INSERT_INTO_MEDIA_DEVICE 
+"INSERT OR IGNORE INTO " + NwdContract.TABLE_MEDIA_DEVICE + " " 
++ "	(" + NwdContract.COLUMN_MEDIA_DEVICE_DESCRIPTION + ") " 
++ "VALUES " 
++ "	(?); " 
+
+-- SELECT_MEDIA_DEVICE_ID 
+"SELECT " + NwdContract.COLUMN_MEDIA_DEVICE_ID + " " 
++ "FROM " + NwdContract.TABLE_MEDIA_DEVICE + " " 
++ "WHERE " + NwdContract.COLUMN_MEDIA_DEVICE_DESCRIPTION + " = ? ; "
+
+-- SELECT_FROM_MEDIA_DEVICE
+"SELECT " + NwdContract.COLUMN_MEDIA_DEVICE_ID + ", " 
+		  + NwdContract.COLUMN_MEDIA_DEVICE_DESCRIPTION + " "
++ "FROM " + NwdContract.TABLE_MEDIA_DEVICE + "; "
+
+-- SELECT_ROOT_ID_ROOT_PATH_FROM_MEDIA_ROOT_FOR_DEVICE_ID
+"SELECT " + NwdContract.COLUMN_MEDIA_ROOT_ID + ", " 
+		  + NwdContract.COLUMN_MEDIA_ROOT_PATH + " "
++ "FROM " + NwdContract.TABLE_MEDIA_ROOT + " " 
++ "WHERE " + NwdContract.COLUMN_MEDIA_DEVICE_ID + " = ? ; "

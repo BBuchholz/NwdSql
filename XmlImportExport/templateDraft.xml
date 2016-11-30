@@ -1,6 +1,7 @@
 <nwd>
 	<mediaSubset>
-		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709' tags='tag1, tag2'/>	
+		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709' 
+			   tags='tag1, tag2'/>	
 	</mediaSubset>
 	<synergySubset>
 		<synergyList listName='TestList' 

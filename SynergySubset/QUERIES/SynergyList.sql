@@ -15,6 +15,13 @@ SELECT SynergyListId
 FROM SynergyList 
 WHERE SynergyListName = ? ;
 
+-- Get ID and TimeStamps for ListName
+SELECT SynergyListId, 
+	   SynergyListActivatedAt, 
+	   SynergyListShelvedAt 
+FROM SynergyList 
+WHERE SynergyListName = ? ;
+
 -- Ensure SynergyItem
 INSERT OR IGNORE INTO SynergyItem
 	(SynergyItemValue)

@@ -33,7 +33,7 @@ SELECT SynergyItemId
 FROM SynergyItem
 WHERE SynergyItemValue = ? ;
 
--- Ensure SynergyListItem
+-- SYNERGY_V5_ENSURE_LIST_ITEM_POSITION_X_Y_Z
 INSERT OR IGNORE INTO SynergyListItem
 	(SynergyListId, 
 	 SynergyItemId, 
@@ -72,3 +72,26 @@ UPDATE SynergyList
 SET SynergyListActivatedAt = MAX(IFNULL(SynergyListActivatedAt, ''), ?),
 	SynergyListShelvedAt = MAX(IFNULL(SynergyListShelvedAt, ''), ?)
 WHERE SynergyListName = ?; 
+
+-- SYNERGY_V5_UPDATE_POSITION_FOR_LIST_ITEM_ID_X_Y
+UPDATE SynergyListItem
+SET SynergyListItemPosition = ?
+WHERE SynergyListItemId = ? ;
+
+-- SYNERGY_V5_ENSURE_TO_DO_FOR_LIST_ITEM_ID_ID_AC_CO_AR
+INSERT OR IGNORE INTO SynergyToDo 
+	(SynergyListItemId,
+	 SynergyToDoActivatedAt,
+	 SynergyToDoCompletedAt,
+	 SynergyToDoArchivedAt) 
+VALUES 
+	(?, ?, ?, ?);
+
+-- SYNERGY_V5_UPDATE_TO_DO_WHERE_LIST_ITEM_ID_AC_CO_AR_ID
+UPDATE SynergyToDo 
+SET SynergyToDoActivatedAt = MAX(IFNULL(SynergyToDoActivatedAt, ''), ?),
+	SynergyToDoCompletedAt = MAX(IFNULL(SynergyToDoCompletedAt, ''), ?),
+	SynergyToDoArchivedAt = MAX(IFNULL(SynergyToDoArchivedAt, ''), ?)
+WHERE SynergyListItemId = ?; 
+
+

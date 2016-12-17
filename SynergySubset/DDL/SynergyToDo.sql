@@ -10,7 +10,7 @@ CREATE TABLE SynergyToDo (
 	SynergyToDoArchivedAt TEXT,
 	SynergyToDoCreatedAt TEXT,
 	SynergyToDoUpdatedAt TEXT, 
-	UNIQUE(SynergyListItemId, SynergyToDoCreatedAt)
+	UNIQUE(SynergyListItemId)
 )
 
 -- updated at trigger

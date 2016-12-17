@@ -28,10 +28,16 @@ INSERT OR IGNORE INTO SynergyItem
 VALUES
 	(?);
 
--- Get ID for SynergyItem
+-- SYNERGY_V5_SELECT_ID_FOR_ITEM_VALUE_X
 SELECT SynergyItemId
 FROM SynergyItem
 WHERE SynergyItemValue = ? ;
+
+-- SYNERGY_V5_SELECT_LIST_ITEM_ID_FOR_LIST_ID_ITEM_ID_X_Y
+SELECT SynergyListItemId
+FROM SynergyListItem
+WHERE SynergyListId = ? 
+AND SynergyItemId = ? ;
 
 -- SYNERGY_V5_ENSURE_LIST_ITEM_POSITION_X_Y_Z
 INSERT OR IGNORE INTO SynergyListItem

@@ -28,7 +28,6 @@ AFTER INSERT ON SynergyToDo
 BEGIN
 UPDATE SynergyToDo 
 	SET SynergyToDoCreatedAt = CURRENT_TIMESTAMP, 
-		   SynergyToDoUpdatedAt = CURRENT_TIMESTAMP,
-		   SynergyToDoActivatedAt = CURRENT_TIMESTAMP
+		   SynergyToDoUpdatedAt = CURRENT_TIMESTAMP
 	WHERE SynergyToDo.SynergyToDoId = NEW.SynergyToDoId;
 END

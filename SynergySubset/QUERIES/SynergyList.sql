@@ -5,11 +5,10 @@ WHERE SynergyListShelvedAt IS NULL
    OR SynergyListActivatedAt >= SynergyListShelvedAt
 ORDER BY SynergyListName;
 
--- SYNERGY_V5_SELECT_ARCHIVE_LISTS
+-- SYNERGY_V5_SELECT_SHELVED_LISTS
 SELECT SynergyListName 
 FROM SynergyList 
-WHERE SynergyListShelvedAt IS NULL 
-   OR SynergyListActivatedAt < SynergyListShelvedAt
+WHERE SynergyListActivatedAt < SynergyListShelvedAt
 ORDER BY SynergyListName;
 
 -- Ensure List

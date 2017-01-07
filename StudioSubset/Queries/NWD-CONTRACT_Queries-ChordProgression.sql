@@ -6,7 +6,7 @@
  + "	(?, ?) ; "
  
  -- Signature is UNIQUE, and once in we don't wanna change it, so keyed on sig. 
- -- STUDIO_V5_UPDATE_CHORD_PROGRESSION_NOTES_BY_SIGNATURE_X_Y "
+ -- STUDIO_V5_UPDATE_CHORD_PROGRESSION_NOTES_BY_SIGNATURE_X_Y 
  "UPDATE " + TABLE_CHORD_PROGRESSION + " "
  + "SET " + COLUMN_CHORD_PROGRESSION_NOTES + " = ? "
  + "WHERE " + COLUMN_CHORD_PROGRESSION_SIGNATURE + " = ? ; "

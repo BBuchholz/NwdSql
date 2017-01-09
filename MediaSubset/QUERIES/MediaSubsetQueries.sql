@@ -24,7 +24,7 @@ SELECT MediaRootId, MediaRootPath
 FROM MediaRoot
 WHERE MediaDeviceId = ? ;
 
--- INSERT_PATH
+-- INSERT_MEDIA_PATH
 INSERT OR IGNORE INTO MediaPath
 	(MediaPathValue)
 VALUES
@@ -41,11 +41,15 @@ INSERT OR IGNORE INTO MediaDevicePath
 	(MediaId, MediaDeviceId, MediaPathId)
 VALUES
 	(
-		(SELECT MediaId FROM Media WHERE MediaFileName = ? AND MediaHash IS NULL LIMIT 1),
+		(SELECT m.MediaId FROM Media m LEFT JOIN MediaDevicePath mdp ON m.MediaId = mdp.MediaId WHERE m.MediaFileName = ? AND m.MediaHash IS NULL AND mdp.MediaDeviceId IS NULL LIMIT 1),
 		?,
 		(SELECT MediaPathId FROM MediaPath WHERE MediaPathValue = ? LIMIT 1)
 	)
 
-
 -- SELECT_PATH_FOR_DEVICE_ID_LIKE_ROOT_PATH_X_Y
-SELECT -- IN PROGRESS	
+SELECT mp.MediaPathValue 
+FROM MediaPath mp 
+JOIN MediaDevicePath mdp 
+ON mp.MediaPathId = mdp.MediaPathId
+WHERE mdp.MediaDeviceId = ?
+AND mp.MediaPathValue LIKE ? || '%';

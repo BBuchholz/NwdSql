@@ -26,7 +26,7 @@
 + "FROM " + NwdContract.TABLE_MEDIA_ROOT + " " 
 + "WHERE " + NwdContract.COLUMN_MEDIA_DEVICE_ID + " = ? ; "
 
--- INSERT_PATH
+-- INSERT_MEDIA_PATH
 "INSERT OR IGNORE INTO " + NwdContract.TABLE_MEDIA_PATH + " " + 
 "	(" + NwdContract.COLUMN_MEDIA_PATH_VALUE + ") " + 
 "VALUES " + 
@@ -43,7 +43,16 @@
 "	(" + NwdContract.COLUMN_MEDIA_ID + ", " + NwdContract.COLUMN_MEDIA_DEVICE_ID + ", " + NwdContract.COLUMN_MEDIA_PATH_ID + ") " + 
 "VALUES " + 
 "	( " + 
-"		(SELECT " + NwdContract.COLUMN_MEDIA_ID + " FROM " + NwdContract.TABLE_MEDIA + " WHERE " + NwdContract.COLUMN_MEDIA_FILE_NAME + " = ? AND " + NwdContract.COLUMN_MEDIA_HASH + " IS NULL LIMIT 1), " + 
+"		(SELECT m." + NwdContract.COLUMN_MEDIA_ID + " FROM " + NwdContract.TABLE_MEDIA + " m LEFT JOIN " + NwdContract.TABLE_MEDIA_DEVICE_PATH + " mdp ON m." + NwdContract.COLUMN_MEDIA_ID + " = mdp." + NwdContract.COLUMN_MEDIA_ID + " WHERE " + NwdContract.COLUMN_MEDIA_FILE_NAME + " = ? AND m." + NwdContract.COLUMN_MEDIA_HASH + " IS NULL AND mdp." + NwdContract.COLUMN_MEDIA_DEVICE_ID + " IS NULL LIMIT 1), " + 
 "		?, " + 
 "		(SELECT " + NwdContract.COLUMN_MEDIA_PATH_ID + " FROM " + NwdContract.TABLE_MEDIA_PATH + " WHERE " + NwdContract.COLUMN_MEDIA_PATH_VALUE + " = ? LIMIT 1) " + 
 "	) " 
+
+-- SELECT_PATH_FOR_DEVICE_ID_LIKE_ROOT_PATH_X_Y
+"SELECT mp." + NwdContract.COLUMN_MEDIA_PATH_VALUE + "  " +
+"FROM " + NwdContract.TABLE_MEDIA_PATH + " mp  " +
+"JOIN " + NwdContract.TABLE_MEDIA_DEVICE_PATH + " mdp  " +
+"ON mp." + NwdContract.COLUMN_MEDIA_PATH_ID + " = mdp." + NwdContract.COLUMN_MEDIA_PATH_ID + " " +
+"WHERE mdp." + NwdContract.COLUMN_MEDIA_DEVICE_ID + " = ? " +
+"AND mp." + NwdContract.COLUMN_MEDIA_PATH_VALUE + " LIKE ? || '%'; "
+

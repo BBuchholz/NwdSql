@@ -107,4 +107,18 @@ SET SynergyToDoActivatedAt = MAX(IFNULL(SynergyToDoActivatedAt, ''), ?),
 	SynergyToDoArchivedAt = MAX(IFNULL(SynergyToDoArchivedAt, ''), ?)
 WHERE SynergyListItemId = ?; 
 
-
+-- SYNERGY_V5_SELECT_LIST_NAMES_WITH_ITEM_COUNTS
+SELECT sl.SynergyListName, COUNT(*) AS 'Count'
+FROM SynergyList sl
+JOIN SynergyListItem sli
+ON sl.SynergyListId = sli.SynergyListId
+LEFT JOIN SynergyToDo std
+ON sli.SynergyListItemId = std.SynergyListItemId
+WHERE (sl.SynergyListShelvedAt IS NULL 
+   OR sl.SynergyListActivatedAt >= sl.SynergyListShelvedAt)
+AND (std.SynergyToDoId IS NULL 
+	OR (std.SynergyToDoActivatedAt >= std.SynergyToDoCompletedAt
+		AND std.SynergyToDoActivatedAt >= std.SynergyToDoArchivedAt)
+	)
+GROUP BY sl.SynergyListName
+ORDER BY sl.SynergyListName;

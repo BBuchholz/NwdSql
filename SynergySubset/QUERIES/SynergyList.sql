@@ -108,7 +108,7 @@ SET SynergyToDoActivatedAt = MAX(IFNULL(SynergyToDoActivatedAt, ''), ?),
 WHERE SynergyListItemId = ?; 
 
 -- SYNERGY_V5_SELECT_LIST_NAMES_WITH_ITEM_COUNTS
-SELECT sl.SynergyListName, COUNT(*) AS 'Count'
+SELECT sl.SynergyListName, COUNT(sli.SynergyListItemId) AS 'Count'
 FROM SynergyList sl
 LEFT JOIN SynergyListItem sli
 ON sl.SynergyListId = sli.SynergyListId

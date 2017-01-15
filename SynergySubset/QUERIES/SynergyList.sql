@@ -110,7 +110,7 @@ WHERE SynergyListItemId = ?;
 -- SYNERGY_V5_SELECT_LIST_NAMES_WITH_ITEM_COUNTS
 SELECT sl.SynergyListName, COUNT(*) AS 'Count'
 FROM SynergyList sl
-JOIN SynergyListItem sli
+LEFT JOIN SynergyListItem sli
 ON sl.SynergyListId = sli.SynergyListId
 LEFT JOIN SynergyToDo std
 ON sli.SynergyListItemId = std.SynergyListItemId

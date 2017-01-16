@@ -122,3 +122,23 @@ AND (std.SynergyToDoId IS NULL
 	)
 GROUP BY sl.SynergyListName
 ORDER BY sl.SynergyListName;
+
+-- SYNERGY_V5_SELECT_LIST_NAMES_WITH_ITEM_COUNTS_NEW
+SELECT sl.SynergyListName, SUM(
+	CASE 
+		WHEN std.SynergyToDoId IS NULL THEN 1
+		WHEN std.SynergyToDoActivatedAt >= std.SynergyToDoCompletedAt
+			AND std.SynergyToDoActivatedAt >= std.SynergyToDoArchivedAt
+		THEN 1
+		ELSE 0
+	END
+) AS 'Count'
+FROM SynergyList sl
+LEFT JOIN SynergyListItem sli
+ON sl.SynergyListId = sli.SynergyListId
+LEFT JOIN SynergyToDo std
+ON sli.SynergyListItemId = std.SynergyListItemId
+WHERE (sl.SynergyListShelvedAt IS NULL 
+   OR sl.SynergyListActivatedAt >= sl.SynergyListShelvedAt)
+GROUP BY sl.SynergyListName
+ORDER BY sl.SynergyListName;

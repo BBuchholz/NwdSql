@@ -53,3 +53,30 @@ JOIN MediaDevicePath mdp
 ON mp.MediaPathId = mdp.MediaPathId
 WHERE mdp.MediaDeviceId = ?
 AND mp.MediaPathValue LIKE ? || '%';
+
+-- INSERT_MEDIA_HASH_X
+INSERT OR IGNORE INTO Media
+	(MediaHash)
+VALUES
+	(?);
+
+-- SELECT_MEDIA_ID_FOR_HASH_X
+SELECT MediaId 
+FROM Media
+WHERE MediaHash = ?
+
+--UPDATE_HASH_FOR_MEDIA_ID
+UPDATE Media 
+SET MediaHash = ? 
+WHERE MediaId = ? 
+
+--INSERT_MEDIA_DEVICE_PATH
+INSERT OR IGNORE INTO MediaDevicePath
+	(MediaId, MediaDeviceId, MediaPathId)
+VALUES
+	(?, ?, ?);
+
+-- SELECT_MEDIA_PATH_ID_FOR_PATH_X
+SELECT MediaPathId 
+FROM MediaPath 
+WHERE MediaPathValue = ?

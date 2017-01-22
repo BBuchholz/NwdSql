@@ -79,4 +79,33 @@ VALUES
 -- SELECT_MEDIA_PATH_ID_FOR_PATH_X
 SELECT MediaPathId 
 FROM MediaPath 
-WHERE MediaPathValue = ?
+WHERE MediaPathValue = ?;
+
+-- SELECT_MEDIA_TAG_ID_VALUE
+SELECT MediaTagId, MediaTagValue
+FROM MediaTag;
+
+-- INSERT_MEDIA_TAG_X
+INSERT OR IGNORE INTO MediaTag
+	(MediaTagValue)
+VALUES
+	(?);
+
+-- SELECT_MEDIA_TAG_ID_FOR_VALUE_X
+SELECT MediaTagId 
+FROM MediaTag
+WHERE MediaTagValue = ?;
+
+-- SELECT_MEDIA_WHERE_HASH_NOT_NULL_OR_WHITESPACE
+SELECT MediaId, 
+	   MediaFileName, 
+	   MediaDescription, 
+	   MediaHash
+FROM Media
+WHERE MediaHash IS NOT NULL AND trim(MediaHash, ' ') != '';
+
+-- INSERT_OR_IGNORE_MEDIA_TAGGING_X_Y
+INSERT OR IGNORE INTO MediaTagging
+	(MediaId, MediaTagId)
+VALUES
+	(?, ?);

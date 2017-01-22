@@ -5,12 +5,12 @@
 CREATE TABLE MediaTagging (
 	MediaTaggingId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
 	MediaId INTEGER NOT NULL REFERENCES Media (MediaId), 
-	TagId INTEGER NOT NULL REFERENCES Tag (TagId),
+	MediaTagId INTEGER NOT NULL REFERENCES MediaTag (MediaTagId),
 	MediaTaggingTaggedAt TEXT,
 	MediaTaggingUntaggedAt TEXT,
 	MediaTaggingCreatedAt TEXT,
 	MediaTaggingUpdatedAt TEXT, 
-	UNIQUE(MediaId, TagId)
+	UNIQUE(MediaId, MediaTagId)
 )
 
 -- updated at trigger

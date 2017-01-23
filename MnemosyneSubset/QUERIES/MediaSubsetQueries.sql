@@ -109,3 +109,26 @@ INSERT OR IGNORE INTO MediaTagging
 	(MediaId, MediaTagId)
 VALUES
 	(?, ?);
+
+-- SELECT_TAGS_FOR_HASH
+SELECT mt.MediaTagId,
+	   mt.MediaTagValue,
+	   mtg.MediaTaggingId,
+	   mtg.MediaId,
+	   mtg.MediaTaggingTaggedAt,
+	   mtg.MediaTaggingUntaggedAt,
+	   m.MediaHash
+FROM MediaTag mt
+JOIN MediaTagging mtg
+ON mt.MediaTagId = mtg.MediaTagId
+JOIN Media m
+ON m.MediaId = mtg.MediaId
+WHERE m.MediaHash = ?
+AND (mtg.MediaTaggingUntaggedAt IS NULL 
+   OR mtg.MediaTaggingUntaggedAt <= mtg.MediaTaggingTaggedAt);
+
+-- UPDATE_MEDIA_TAGGING_TAGGED_UNTAGGED_WHERE_MEDIA_ID_AND_TAG_ID_W_X_Y_Z
+UPDATE MediaTagging 
+SET MediaTaggingTaggedAt = MAX(IFNULL(MediaTaggingTaggedAt, ''), ?),
+	MediaTaggingUntaggedAt = MAX(IFNULL(MediaTaggingUntaggedAt, ''), ?)
+WHERE MediaId = ? AND MediaTagId = ?; 

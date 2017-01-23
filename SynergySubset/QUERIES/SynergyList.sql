@@ -80,7 +80,7 @@ ON sli.SynergyListItemId = std.SynergyListItemId
 WHERE sli.SynergyListId = ?  
 ORDER BY sli.SynergyListItemPosition;
 
--- SYNERGY_V5_LIST_UPDATE_ACTIVATE_AT_SHELVED_AT_FOR_LIST_NAME
+-- SYNERGY_V5_LIST_UPDATE_ACTIVATE_AT_SHELVED_AT_FOR_LIST_NAME_X_Y_Z
 UPDATE SynergyList 
 SET SynergyListActivatedAt = MAX(IFNULL(SynergyListActivatedAt, ''), ?),
 	SynergyListShelvedAt = MAX(IFNULL(SynergyListShelvedAt, ''), ?)

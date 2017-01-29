@@ -9,7 +9,7 @@ CREATE TABLE MediaTranscript (
 	MediaTranscriptEndTime Text, 
 	MediaTranscriptCreatedAt TEXT,
 	MediaTranscriptUpdatedAt TEXT, 
-	UNIQUE(MediaTranscriptValue, MediaTranscriptBeginTime, MediaTranscriptEndTime)
+	UNIQUE(MediaTranscriptBeginTime, MediaTranscriptEndTime)
 )
 
 -- updated at trigger

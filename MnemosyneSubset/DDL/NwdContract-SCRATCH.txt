@@ -8,6 +8,15 @@ TABLE_MEDIA_TAGGING
 TABLE_MEDIA_TRANSCRIPTION
 TABLE_MEDIA_TRANSCRIPT
 
+public static final String TABLE_LOCAL_CONFIG = "LocalConfig";
+
+public static final String COLUMN_LOCAL_CONFIG_ID = "LocalConfigId";
+public static final String COLUMN_LOCAL_CONFIG_KEY = "LocalConfigKey";
+public static final String COLUMN_LOCAL_CONFIG_VALUE = "LocalConfigValue";
+public static final String COLUMN_LOCAL_CONFIG_CREATED_AT = "LocalConfigCreatedAt";
+public static final String COLUMN_LOCAL_CONFIG_UPDATED_AT = "LocalConfigUpdatedAt";
+
+
 
 COLUMN_MEDIA_ROOT_ID
 COLUMN_MEDIA_ROOT_PATH

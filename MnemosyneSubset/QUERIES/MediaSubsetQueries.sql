@@ -132,3 +132,9 @@ UPDATE MediaTagging
 SET MediaTaggingTaggedAt = MAX(IFNULL(MediaTaggingTaggedAt, ''), ?),
 	MediaTaggingUntaggedAt = MAX(IFNULL(MediaTaggingUntaggedAt, ''), ?)
 WHERE MediaId = ? AND MediaTagId = ?; 
+
+-- MNEMOSYNE_V5_SELECT_MEDIA_DEVICE_BY_DESC_X
+SELECT MediaDeviceId, 
+	   MediaDeviceDescription
+FROM MediaDevice
+WHERE MediaDeviceDescription = ?;

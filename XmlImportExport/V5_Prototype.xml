@@ -1,7 +1,21 @@
 <nwd>
 	<mediaSubset>
 		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709' 
-			   tags='tag1, tag2'/>	
+			   tags='tag1, tag2'>
+			<mediaDevice description='galaxy-a'>
+				<path value='/some/path/to/file' 
+					  verifiedPresent='2016-11-01 09:24:00'
+					  verifiedMissing='2016-11-02 09:30:00'/>
+			</mediaDevice>	   	
+			<mediaDevice description='logos'>
+				<path value='/some/path/to/file' 
+					  verifiedPresent='2016-11-01 11:24:00'
+					  verifiedMissing='2016-11-02 11:30:00'/>
+				<path value='/some/path/to/file' 
+					  verifiedPresent='2016-11-02 10:24:00'
+					  verifiedMissing='2016-11-03 10:30:00'/>
+			</mediaDevice>
+	    </media>	
 	</mediaSubset>
 	<synergySubset>
 		<synergyList listName='TestList' 

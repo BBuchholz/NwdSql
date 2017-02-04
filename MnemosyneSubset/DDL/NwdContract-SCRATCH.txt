@@ -8,6 +8,15 @@ TABLE_MEDIA_TAGGING
 TABLE_MEDIA_TRANSCRIPTION
 TABLE_MEDIA_TRANSCRIPT
 
+public static final String TABLE_LOCAL_CONFIG = "LocalConfig";
+
+public static final String COLUMN_LOCAL_CONFIG_ID = "LocalConfigId";
+public static final String COLUMN_LOCAL_CONFIG_KEY = "LocalConfigKey";
+public static final String COLUMN_LOCAL_CONFIG_VALUE = "LocalConfigValue";
+public static final String COLUMN_LOCAL_CONFIG_CREATED_AT = "LocalConfigCreatedAt";
+public static final String COLUMN_LOCAL_CONFIG_UPDATED_AT = "LocalConfigUpdatedAt";
+
+
 
 COLUMN_MEDIA_ROOT_ID
 COLUMN_MEDIA_ROOT_PATH
@@ -53,3 +62,65 @@ COLUMN_MEDIA_DEVICE_PATH_UPDATED_AT
 
 COLUMN_MEDIA_DEVICE_CREATED_AT
 COLUMN_MEDIA_DEVICE_UPDATED_AT
+
+
+
+MediaTranscriptId
+MediaTranscriptValue
+MediaTranscriptBeginTime
+MediaTranscriptEndTime
+MediaTranscriptCreatedAt
+MediaTranscriptUpdatedAt
+MediaTranscriptionId
+MediaTranscriptionCreatedAt
+MediaTranscriptionUpdatedAt
+MediaCreatedAt
+MediaUpdatedAt
+MediaRootCreatedAt
+MediaRootUpdatedAt
+MediaPathCreatedAt
+MediaPathUpdatedAt
+MediaDevicePathId
+MediaDevicePathCreatedAt
+MediaDevicePathUpdatedAt
+MediaDeviceCreatedAt
+MediaDeviceUpdatedAt
+
+MediaTaggingId
+MediaTaggingTaggedAt
+MediaTaggingUntaggedAt
+MediaTaggingCreatedAt
+MediaTaggingUpdatedAt
+
+public static final String COLUMN_MEDIA_TAGGING_ID = "MediaTaggingId";
+public static final String COLUMN_MEDIA_TAGGING_TAGGED_AT = "MediaTaggingTaggedAt";
+public static final String COLUMN_MEDIA_TAGGING_UNTAGGED_AT = "MediaTaggingUntaggedAt";
+public static final String COLUMN_MEDIA_TAGGING_CREATED_AT = "MediaTaggingCreatedAt";
+public static final String COLUMN_MEDIA_TAGGING_UPDATED_AT = "MediaTaggingUpdatedAt";
+
+public static final String COLUMN_MEDIA_TRANSCRIPT_ID = "MediaTranscriptId";
+public static final String COLUMN_MEDIA_TRANSCRIPT_VALUE = "MediaTranscriptValue";
+public static final String COLUMN_MEDIA_TRANSCRIPT_BEGIN_TIME = "MediaTranscriptBeginTime";
+public static final String COLUMN_MEDIA_TRANSCRIPT_END_TIME = "MediaTranscriptEndTime";
+public static final String COLUMN_MEDIA_TRANSCRIPT_CREATED_AT = "MediaTranscriptCreatedAt";
+public static final String COLUMN_MEDIA_TRANSCRIPT_UPDATED_AT = "MediaTranscriptUpdatedAt";
+
+public static final String COLUMN_MEDIA_TRANSCRIPTION_ID = "MediaTranscriptionId";
+public static final String COLUMN_MEDIA_TRANSCRIPTION_CREATED_AT = "MediaTranscriptionCreatedAt";
+public static final String COLUMN_MEDIA_TRANSCRIPTION_UPDATED_AT = "MediaTranscriptionUpdatedAt";
+
+public static final String COLUMN_MEDIA_CREATED_AT = "MediaCreatedAt";
+public static final String COLUMN_MEDIA_UPDATED_AT = "MediaUpdatedAt";
+
+public static final String COLUMN_MEDIA_ROOT_CREATED_AT = "MediaRootCreatedAt";
+public static final String COLUMN_MEDIA_ROOT_UPDATED_AT = "MediaRootUpdatedAt";
+
+public static final String COLUMN_MEDIA_PATH_CREATED_AT = "MediaPathCreatedAt";
+public static final String COLUMN_MEDIA_PATH_UPDATED_AT = "MediaPathUpdatedAt";
+
+public static final String COLUMN_MEDIA_DEVICE_PATH_ID = "MediaDevicePathId";
+public static final String COLUMN_MEDIA_DEVICE_PATH_CREATED_AT = "MediaDevicePathCreatedAt";
+public static final String COLUMN_MEDIA_DEVICE_PATH_UPDATED_AT = "MediaDevicePathUpdatedAt";
+
+public static final String COLUMN_MEDIA_DEVICE_CREATED_AT = "MediaDeviceCreatedAt";
+public static final String COLUMN_MEDIA_DEVICE_UPDATED_AT = "MediaDeviceUpdatedAt";

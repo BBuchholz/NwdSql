@@ -1,0 +1,2 @@
+ALTER TABLE MediaDevicePath ADD COLUMN MediaDevicePathVerifiedPresent TEXT;
+ALTER TABLE MediaDevicePath ADD COLUMN MediaDevicePathVerifiedMissing TEXT;

@@ -1,7 +1,12 @@
 <nwd>
 	<mediaSubset>
-		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709' 
-			   tags='tag1, tag2'>
+		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709'>
+		    <tag tagValue='tag1' 
+		    	 taggedAt='2016-11-01 09:24:00' 
+		    	 untaggedAt='2016-11-02 10:24:00'/>
+		    <tag tagValue='tag2' 
+		    	 taggedAt='2016-11-03 11:24:00' 
+		    	 untaggedAt='2016-11-02 10:24:00'/>
 			<mediaDevice description='galaxy-a'>
 				<path value='/some/path/to/file' 
 					  verifiedPresent='2016-11-01 09:24:00'

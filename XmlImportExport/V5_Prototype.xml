@@ -1,5 +1,5 @@
 <nwd>
-	<mediaSubset>
+	<mnemosyneSubset>
 		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709'>
 		    <tag tagValue='tag1' 
 		    	 taggedAt='2016-11-01 09:24:00' 
@@ -21,7 +21,7 @@
 					  verifiedMissing='2016-11-03 10:30:00'/>
 			</mediaDevice>
 	    </media>	
-	</mediaSubset>
+	</mnemosyneSubset>
 	<synergySubset>
 		<synergyList listName='TestList' 
 					 activatedAt='2016-11-01 09:24:00' 

@@ -138,3 +138,21 @@ SELECT MediaDeviceId,
 	   MediaDeviceDescription
 FROM MediaDevice
 WHERE MediaDeviceDescription = ?;
+
+-- SELECT_DEVICE_PATHS_FOR_HASH_X
+SELECT mp.MediaPathValue,
+       md.MediaDeviceDescription,
+       mdp.MediaDevicePathId,
+       mdp.MediaId,
+       mdp.MediaDeviceId,
+       mdp.MediaPathId,
+       mdp.MediaDevicePathVerifiedPresent,
+       mdp.MediaDevicePathVerifiedMissing
+FROM Media m
+JOIN MediaDevicePath mdp
+ON m.MediaId = mdp.MediaId
+JOIN MediaDevice md
+ON mdp.MediaDeviceId = md.MediaDeviceId
+JOIN MediaPath mp
+ON mp.MediaPathId = mdp.MediaPathId
+WHERE m.MediaHash = ?;

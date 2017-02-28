@@ -140,3 +140,22 @@
 "	    " + COLUMN_MEDIA_DEVICE_DESCRIPTION + " " +
 "FROM " + TABLE_MEDIA_DEVICE + " " +
 "WHERE " + COLUMN_MEDIA_DEVICE_DESCRIPTION + " = ?; " 
+
+-- SELECT_DEVICE_PATHS_FOR_HASH_X
+"SELECT mp." + COLUMN_MEDIA_PATH_VALUE + ", " + 
+"       md." + COLUMN_MEDIA_DEVICE_DESCRIPTION + ", " + 
+"       mdp." + COLUMN_MEDIA_DEVICE_PATH_ID + ", " + 
+"       mdp." + COLUMN_MEDIA_ID + ", " + 
+"       mdp." + COLUMN_MEDIA_DEVICE_ID + ", " + 
+"       mdp." + COLUMN_MEDIA_PATH_ID + ", " + 
+"       mdp." + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_PRESENT + ", " + 
+"       mdp." + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_MISSING + " " + 
+"FROM " + TABLE_MEDIA + " m " + 
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " + 
+"ON m." + COLUMN_MEDIA_ID + " = mdp." + COLUMN_MEDIA_ID + " " + 
+"JOIN " + TABLE_MEDIA_DEVICE + " md " + 
+"ON mdp." + COLUMN_MEDIA_DEVICE_ID + " = md." + COLUMN_MEDIA_DEVICE_ID + " " + 
+"JOIN " + TABLE_MEDIA_PATH + " mp " + 
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " + 
+"WHERE m." + COLUMN_MEDIA_HASH + " = ?; "
+

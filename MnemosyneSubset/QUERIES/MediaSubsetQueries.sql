@@ -65,7 +65,7 @@ SELECT MediaId
 FROM Media
 WHERE MediaHash = ?
 
---UPDATE_HASH_FOR_MEDIA_ID
+--UPDATE_HASH_FOR_MEDIA_ID_X_Y
 UPDATE Media 
 SET MediaHash = ? 
 WHERE MediaId = ? 
@@ -156,3 +156,35 @@ ON mdp.MediaDeviceId = md.MediaDeviceId
 JOIN MediaPath mp
 ON mp.MediaPathId = mdp.MediaPathId
 WHERE m.MediaHash = ?;
+
+-- SELECT_MEDIA_FOR_HASH_X
+SELECT MediaId, 
+	   MediaFileName, 
+	   MediaDescription, 
+	   MediaHash
+FROM Media
+WHERE MediaHash = ?
+
+-- UPDATE_MEDIA_FILE_DESC_FOR_HASH_X_Y_Z
+UPDATE Media 
+SET MediaFileName = ?,
+	MediaDescription = ?
+WHERE MediaHash = ? 
+
+-- INSERT_MEDIA_DEVICE_PATH_V_W_X_Y_Z
+INSERT OR IGNORE INTO MediaDevicePath
+	(
+		MediaId,
+		MediaDeviceId, 
+		MediaPathId, 
+		MediaDevicePathVerifiedPresent,
+		MediaDevicePathVerifiedMissing
+	)
+VALUES
+	(?, ?, ?, ?, ?);
+
+-- UPDATE_MEDIA_DEVICE_PATH_V_W_X_Y_Z
+UPDATE MediaDevicePath 
+SET MediaDevicePathVerifiedPresent = MAX(IFNULL(MediaDevicePathVerifiedPresent, ''), ?),
+	MediaDevicePathVerifiedMissing = MAX(IFNULL(MediaDevicePathVerifiedMissing, ''), ?)
+WHERE MediaId = ? AND MediaDeviceId = ? AND MediaPathId = ?; 

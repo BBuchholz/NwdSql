@@ -1,6 +1,8 @@
 <nwd>
 	<mnemosyneSubset>
-		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709'>
+		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709'
+			   fileName='someFile.txt'
+			   description='this is a dummy media example for prototyping'>
 		    <tag tagValue='tag1' 
 		    	 taggedAt='2016-11-01 09:24:00' 
 		    	 untaggedAt='2016-11-02 10:24:00'/>

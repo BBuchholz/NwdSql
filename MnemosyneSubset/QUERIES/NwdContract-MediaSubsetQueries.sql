@@ -26,7 +26,7 @@
 + "FROM " + NwdContract.TABLE_MEDIA_ROOT + " " 
 + "WHERE " + NwdContract.COLUMN_MEDIA_DEVICE_ID + " = ? ; "
 
--- INSERT_MEDIA_PATH
+-- INSERT_MEDIA_PATH_X
 "INSERT OR IGNORE INTO " + NwdContract.TABLE_MEDIA_PATH + " " + 
 "	(" + NwdContract.COLUMN_MEDIA_PATH_VALUE + ") " + 
 "VALUES " + 

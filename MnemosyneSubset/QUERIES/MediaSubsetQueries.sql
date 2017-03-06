@@ -24,7 +24,7 @@ SELECT MediaRootId, MediaRootPath
 FROM MediaRoot
 WHERE MediaDeviceId = ? ;
 
--- INSERT_MEDIA_PATH
+-- INSERT_MEDIA_PATH_X
 INSERT OR IGNORE INTO MediaPath
 	(MediaPathValue)
 VALUES

@@ -188,3 +188,19 @@ UPDATE MediaDevicePath
 SET MediaDevicePathVerifiedPresent = MAX(IFNULL(MediaDevicePathVerifiedPresent, ''), ?),
 	MediaDevicePathVerifiedMissing = MAX(IFNULL(MediaDevicePathVerifiedMissing, ''), ?)
 WHERE MediaId = ? AND MediaDeviceId = ? AND MediaPathId = ?; 
+
+-- MNEMOSYNE_V5_GET_TAGS_FOR_PATHS_FOR_DEVICE_NAME_X
+SELECT mt.MediaTagValue, 
+	   mp.MediaPathValue
+FROM MediaPath mp
+JOIN MediaDevicePath mdp
+ON mp.MediaPathId = mdp.MediaPathId
+JOIN MediaDevice md
+ON mdp.MediaDeviceId = md.MediaDeviceId
+JOIN Media m
+ON mdp.MediaId = m.MediaId
+JOIN MediaTagging mtg
+ON m.MediaId = mtg.MediaId
+JOIN MediaTag mt
+ON mtg.MediaTagId = mt.MediaTagId  
+WHERE md.MediaDeviceDescription = ?;

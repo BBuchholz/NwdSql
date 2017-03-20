@@ -189,7 +189,7 @@ SET MediaDevicePathVerifiedPresent = MAX(IFNULL(MediaDevicePathVerifiedPresent, 
 	MediaDevicePathVerifiedMissing = MAX(IFNULL(MediaDevicePathVerifiedMissing, ''), ?)
 WHERE MediaId = ? AND MediaDeviceId = ? AND MediaPathId = ?; 
 
--- MNEMOSYNE_V5_GET_TAGS_FOR_PATHS_FOR_DEVICE_NAME_X
+-- MNEMOSYNE_V5_GET_ACTIVE_TAGS_FOR_PATHS_FOR_DEVICE_NAME_X
 SELECT mt.MediaTagValue, 
 	   mp.MediaPathValue
 FROM MediaPath mp
@@ -203,4 +203,54 @@ JOIN MediaTagging mtg
 ON m.MediaId = mtg.MediaId
 JOIN MediaTag mt
 ON mtg.MediaTagId = mt.MediaTagId  
-WHERE md.MediaDeviceDescription = ?;
+WHERE md.MediaDeviceDescription = ?
+AND mtg.MediaTaggingTaggedAt >= mtg.MediaTaggingUntaggedAt;
+
+-- UPDATE_MEDIA_FILE_NAME_FOR_HASH_X_Y
+UPDATE Media
+SET MediaFileName = ?
+WHERE MediaHash = ?;
+
+-- UPDATE_MEDIA_DESCRIPTION_FOR_HASH_X_Y
+UPDATE Media
+SET MediaDescription = ?
+WHERE MediaHash = ?;
+
+-- SELECT_MEDIA_TAGGINGS_FOR_HASH_X
+SELECT mt.MediaTagId, 
+	   mtg.MediaTaggingId, 
+	   m.MediaId, 
+	   mt.MediaTagValue, 
+	   m.MediaHash, 
+	   mtg.MediaTaggingTaggedAt, 
+	   mtg.MediaTaggingUntaggedAt
+FROM Media m
+JOIN MediaTagging mtg
+ON m.MediaId = mtg.MediaId
+JOIN MediaTag mt
+ON mtg.MediaTagId = mt.MediaTagId
+WHERE m.MediaHash = ?
+
+-- SELECT_MEDIA_DEVICE_PATHS_FOR_MEDIA_ID_X
+SELECT mdp.MediaDevicePathId,
+	   m.MediaId,
+	   md.MediaDeviceId,
+	   mp.MediaPathId,
+	   mp.MediaPathValue,
+	   md.MediaDeviceDescription,
+	   mdp.MediaDevicePathVerifiedPresent,
+	   mdp.MediaDevicePathVerifiedMissing
+FROM Media m
+JOIN MediaDevicePath mdp
+ON m.MediaId = mdp.MediaId
+JOIN MediaPath mp
+ON mp.MediaPathId = mdp.MediaPathId
+JOIN MediaDevice md
+ON md.MediaDeviceId = mdp.MediaDeviceId
+WHERE m.MediaId = ?
+
+-- INSERT_OR_IGNORE_MEDIA_DEVICE_PATH_X_Y_Z
+INSERT OR IGNORE INTO MediaDevicePath
+	(MediaId, MediaDeviceId, MediaPathId)
+VALUES
+	(?, ?, ?);

@@ -192,3 +192,72 @@
 "SET " + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_PRESENT + " = MAX(IFNULL(" + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_PRESENT + ", ''), ?), " +
 "	" + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_MISSING + " = MAX(IFNULL(" + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_MISSING + ", ''), ?) " +
 "WHERE " + COLUMN_MEDIA_ID + " = ? AND " + COLUMN_MEDIA_DEVICE_ID + " = ? AND " + COLUMN_MEDIA_PATH_ID + " = ?; " 
+
+-- MNEMOSYNE_V5_GET_ACTIVE_TAGS_FOR_PATHS_FOR_DEVICE_NAME_X
+"SELECT mt." + COLUMN_MEDIA_TAG_VALUE + ",  " + 
+"	   mp." + COLUMN_MEDIA_PATH_VALUE + " " + 
+"FROM " + TABLE_MEDIA_PATH + " mp " + 
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " + 
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " + 
+"JOIN " + TABLE_MEDIA_DEVICE + " md " + 
+"ON mdp." + COLUMN_MEDIA_DEVICE_ID + " = md." + COLUMN_MEDIA_DEVICE_ID + " " + 
+"JOIN " + TABLE_MEDIA + " m " + 
+"ON mdp." + COLUMN_MEDIA_ID + " = m." + COLUMN_MEDIA_ID + " " + 
+"JOIN " + TABLE_MEDIA_TAGGING + " mtg " + 
+"ON m." + COLUMN_MEDIA_ID + " = mtg." + COLUMN_MEDIA_ID + " " + 
+"JOIN " + TABLE_MEDIA_TAG + " mt " + 
+"ON mtg." + COLUMN_MEDIA_TAG_ID + " = mt." + COLUMN_MEDIA_TAG_ID + "   " + 
+"WHERE md." + COLUMN_MEDIA_DEVICE_DESCRIPTION + " = ? " + 
+"AND mtg." + COLUMN_MEDIA_TAGGING_TAGGED_AT + 
+" >= mtg." + COLUMN_MEDIA_TAGGING_UNTAGGED_AT + "; "
+
+-- UPDATE_MEDIA_FILE_NAME_FOR_HASH_X_Y
+"UPDATE " + TABLE_MEDIA + " " + 
+"SET " + COLUMN_MEDIA_FILE_NAME + " = ? " + 
+"WHERE " + COLUMN_MEDIA_HASH + " = ?; "
+
+-- UPDATE_MEDIA_DESCRIPTION_FOR_HASH_X_Y
+"UPDATE " + TABLE_MEDIA + " " +
+"SET " + COLUMN_MEDIA_DESCRIPTION + " = ? " +
+"WHERE " + COLUMN_MEDIA_HASH + " = ?; " 
+
+-- SELECT_MEDIA_TAGGINGS_FOR_HASH_X
+"SELECT mt." + COLUMN_MEDIA_TAG_ID + ",  " + 
+"	   mtg." + COLUMN_MEDIA_TAGGING_ID + ",  " + 
+"	   m." + COLUMN_MEDIA_ID + ", " + 
+"	   mt." + COLUMN_MEDIA_TAG_VALUE + ",  " + 
+"	   m." + COLUMN_MEDIA_HASH + ",  " + 
+"	   mtg." + COLUMN_MEDIA_TAGGING_TAGGED_AT + ",  " + 
+"	   mtg." + COLUMN_MEDIA_TAGGING_UNTAGGED_AT + " " + 
+"FROM " + TABLE_MEDIA + " m " + 
+"JOIN " + TABLE_MEDIA_TAGGING + " mtg " + 
+"ON m." + COLUMN_MEDIA_ID + " = mtg." + COLUMN_MEDIA_ID + " " + 
+"JOIN " + TABLE_MEDIA_TAG + " mt " + 
+"ON mtg." + COLUMN_MEDIA_TAG_ID + " = mt." + COLUMN_MEDIA_TAG_ID + " " + 
+"WHERE m." + COLUMN_MEDIA_HASH + " = ? " 
+
+-- SELECT_MEDIA_DEVICE_PATHS_FOR_MEDIA_ID_X
+"SELECT mdp." + COLUMN_MEDIA_DEVICE_PATH_ID + ", " + 
+"	   m." + COLUMN_MEDIA_ID + ", " + 
+"	   md." + COLUMN_MEDIA_DEVICE_ID + ", " + 
+"	   mp." + COLUMN_MEDIA_PATH_ID + ", " + 
+"	   mp." + COLUMN_MEDIA_PATH_VALUE + ", " + 
+"	   md." + COLUMN_MEDIA_DEVICE_DESCRIPTION + ", " + 
+"	   mdp." + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_PRESENT + ", " + 
+"	   mdp." + COLUMN_MEDIA_DEVICE_PATH_VERIFIED_MISSING + " " + 
+"FROM " + TABLE_MEDIA + " m " + 
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " + 
+"ON m." + COLUMN_MEDIA_ID + " = mdp." + COLUMN_MEDIA_ID + " " + 
+"JOIN " + TABLE_MEDIA_PATH + " mp " + 
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " + 
+"JOIN " + TABLE_MEDIA_DEVICE + " md " + 
+"ON md." + COLUMN_MEDIA_DEVICE_ID + " = mdp." + COLUMN_MEDIA_DEVICE_ID + " " + 
+"WHERE m." + COLUMN_MEDIA_ID + " = ?; " 
+
+-- INSERT_OR_IGNORE_MEDIA_DEVICE_PATH_X_Y_Z
+"INSERT OR IGNORE INTO " + TABLE_MEDIA_DEVICE_PATH + " " +
+"	(" + COLUMN_MEDIA_ID + ", " + 
+		 COLUMN_MEDIA_DEVICE_ID + ", " + 
+		 COLUMN_MEDIA_PATH_ID + ") " +
+"VALUES " +
+"	(?, ?, ?); " 

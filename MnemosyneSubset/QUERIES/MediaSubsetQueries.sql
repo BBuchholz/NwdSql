@@ -232,6 +232,7 @@ ON m.MediaId = mtg.MediaId
 JOIN MediaTag mt
 ON mtg.MediaTagId = mt.MediaTagId
 WHERE m.MediaHash = ?
+COLLATE NOCASE
 
 -- SELECT_MEDIA_DEVICE_PATHS_FOR_MEDIA_ID_X
 SELECT mdp.MediaDevicePathId,

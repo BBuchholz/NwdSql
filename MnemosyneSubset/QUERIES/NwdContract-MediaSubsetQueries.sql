@@ -234,7 +234,8 @@
 "ON m." + COLUMN_MEDIA_ID + " = mtg." + COLUMN_MEDIA_ID + " " + 
 "JOIN " + TABLE_MEDIA_TAG + " mt " + 
 "ON mtg." + COLUMN_MEDIA_TAG_ID + " = mt." + COLUMN_MEDIA_TAG_ID + " " + 
-"WHERE m." + COLUMN_MEDIA_HASH + " = ? " 
+"WHERE m." + COLUMN_MEDIA_HASH + " = ? " +
+"COLLATE NOCASE " 
 
 -- SELECT_MEDIA_DEVICE_PATHS_FOR_MEDIA_ID_X
 "SELECT mdp." + COLUMN_MEDIA_DEVICE_PATH_ID + ", " + 

@@ -1,0 +1,1 @@
+mimic relevant Mnemosyne DDL scripts

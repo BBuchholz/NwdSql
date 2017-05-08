@@ -1,0 +1,11 @@
+for Source table:
+	-lookup programmatically will be by TypeId, Title, Year, and Url
+	-we WILL NOT be using a unique constraint on these columns however
+	 because we want to support the option for multiple entries that will
+	 eventually be filled in differently 
+	 	-eg. I may know there are two versions of a movie from different
+	 	 years, but I may not know the years. temporarily I can enter 
+	 	 one for each, linking excerpts to them respectively, and
+	 	 later fill in the dates. Or I could have a book published one year,
+	 	 and later take excerpts from an expanded edition published another 
+	 	 year, again not knowing the year.

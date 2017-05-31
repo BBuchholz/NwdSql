@@ -8,11 +8,23 @@ SELECT SourceTypeId
 FROM SourceType
 WHERE SourceTypeValue = ? ;
 
+-- SELECT_SOURCE_EXCERPT_TYPE_ID_X_Y
+SELECT SourceExcerptId
+FROM SourceExcerpt
+WHERE SourceId = ?
+AND SourceExcerptValue = ? ;
+
 -- INSERT_OR_IGNORE_SOURCE_TYPE_VALUE
 INSERT OR IGNORE INTO SourceType 
 	(SourceTypeValue)
 VALUES 
 	(?);
+
+-- INSERT_OR_IGNORE_SOURCE_TYPE_VALUE
+INSERT OR IGNORE INTO SourceExcerpt 
+	(SourceId, SourceExcerptValue)
+VALUES 
+	(?, ?);
 
 -- SELECT_SOURCES_BY_TYPE_ID_X
 SELECT SourceId,
@@ -52,3 +64,17 @@ INSERT OR IGNORE INTO Source
 	 SourceRetrievalDate)
 VALUES
 	(?,?,?,?,?,?,?);
+
+-- SELECT_EXCERPTS_WITH_TAGS_FOR_SOURCE_ID_X
+SELECT  sext.SourceExcerptTaggingId,
+		se.SourceExcerptId,
+		se.SourceId,
+		se.SourceExcerptValue,
+		mt.MediaTagId,
+		mt.MediaTagValue	
+FROM SourceExcerpt se 
+JOIN SourceExcerptTagging sext
+ON se.SourceExcerptId = sext.SourceExcerptId
+JOIN MediaTag mt
+ON sext.MediaTagId = mt.MediaTagId
+WHERE se.SourceId = ? ;

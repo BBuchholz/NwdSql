@@ -90,3 +90,9 @@ SELECT SourceExcerptTaggingId
 FROM SourceExcerptTagging
 WHERE SourceExcerptId = ? 
 AND MediaTagId = ? ;
+
+-- INSERT_OR_IGNORE_EXCERPT_TAGGING_X_Y
+INSERT OR IGNORE INTO SourceExcerptTagging
+	(SourceExcerptId, MediaTagId)
+VALUES
+	(?, ?);

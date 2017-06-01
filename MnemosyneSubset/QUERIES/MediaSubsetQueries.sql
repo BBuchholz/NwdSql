@@ -1,16 +1,16 @@
--- INSERT MediaRoot
+-- INSERT_DEVICE_ID_PATH_INTO_MEDIA_ROOT
 INSERT OR IGNORE INTO MediaRoot
 	(MediaDeviceId, MediaRootPath)
 VALUES
 	(?, ?);
 
--- INSERT MediaDevice
+-- INSERT_INTO_MEDIA_DEVICE
 INSERT OR IGNORE INTO MediaDevice
 	(MediaDeviceDescription)
 VALUES
 	(?);
 
--- SELECT MediaDeviceId
+-- SELECT_MEDIA_DEVICE_ID
 SELECT MediaDeviceId
 FROM MediaDevice
 WHERE MediaDeviceDescription = ? ;

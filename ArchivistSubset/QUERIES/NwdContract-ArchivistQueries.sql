@@ -73,8 +73,14 @@
 "		mt." + COLUMN_MEDIA_TAG_ID + ", " +
 "		mt." + COLUMN_MEDIA_TAG_VALUE + " " +
 "FROM " + TABLE_SOURCE_EXCERPT + " se " +
-"JOIN " + TABLE_SOURCE_EXCERPT_TAGGING + " sext " +
+"LEFT JOIN " + TABLE_SOURCE_EXCERPT_TAGGING + " sext " +
 "ON se." + COLUMN_SOURCE_EXCERPT_ID + " = sext." + COLUMN_SOURCE_EXCERPT_ID + " " +
-"JOIN " + TABLE_MEDIA_TAG + " mt " +
+"LEFT JOIN " + TABLE_MEDIA_TAG + " mt " +
 "ON sext." + COLUMN_MEDIA_TAG_ID + " = mt." + COLUMN_MEDIA_TAG_ID + " " +
 "WHERE se." + COLUMN_SOURCE_ID + " = ? ; " 
+
+-- UPDATE_SOURCE_EXCERPT_TAGGING_TIMESTAMPS_X_Y_Z
+UPDATE SourceExcerptTagging 
+SET SourceExcerptTaggingTaggedAt = MAX(IFNULL(SourceExcerptTaggingTaggedAt, ''), ?),
+	SourceExcerptTaggingUntaggedAt = MAX(IFNULL(SourceExcerptTaggingUntaggedAt, ''), ?)
+WHERE SourceExcerptTaggingId = ? ;

@@ -73,8 +73,20 @@ SELECT  sext.SourceExcerptTaggingId,
 		mt.MediaTagId,
 		mt.MediaTagValue	
 FROM SourceExcerpt se 
-JOIN SourceExcerptTagging sext
+LEFT JOIN SourceExcerptTagging sext
 ON se.SourceExcerptId = sext.SourceExcerptId
-JOIN MediaTag mt
+LEFT JOIN MediaTag mt
 ON sext.MediaTagId = mt.MediaTagId
 WHERE se.SourceId = ? ;
+
+-- UPDATE_SOURCE_EXCERPT_TAGGING_TIMESTAMPS_X_Y_Z
+UPDATE SourceExcerptTagging 
+SET SourceExcerptTaggingTaggedAt = MAX(IFNULL(SourceExcerptTaggingTaggedAt, ''), ?),
+	SourceExcerptTaggingUntaggedAt = MAX(IFNULL(SourceExcerptTaggingUntaggedAt, ''), ?)
+WHERE SourceExcerptTaggingId = ? ;
+
+-- SELECT_SOURCE_EXCERPT_TAGGING_ID_X_Y
+SELECT SourceExcerptTaggingId
+FROM SourceExcerptTagging
+WHERE SourceExcerptId = ? 
+AND MediaTagId = ? ;

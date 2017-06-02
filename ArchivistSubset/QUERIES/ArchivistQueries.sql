@@ -79,6 +79,21 @@ LEFT JOIN MediaTag mt
 ON sext.MediaTagId = mt.MediaTagId
 WHERE se.SourceId = ? ;
 
+-- SELECT_EXCERPTS_WITH_TAGGED_TAGS_FOR_SOURCE_ID_X
+SELECT  sext.SourceExcerptTaggingId,
+		se.SourceExcerptId,
+		se.SourceId,
+		se.SourceExcerptValue,
+		mt.MediaTagId,
+		mt.MediaTagValue	
+FROM SourceExcerpt se 
+LEFT JOIN SourceExcerptTagging sext
+ON se.SourceExcerptId = sext.SourceExcerptId
+LEFT JOIN MediaTag mt
+ON sext.MediaTagId = mt.MediaTagId
+WHERE se.SourceId = ? 
+AND IFNULL(sext.SourceExcerptTaggingTaggedAt, '') >= IFNULL(sext.SourceExcerptTaggingUntaggedAt, '');
+
 -- UPDATE_SOURCE_EXCERPT_TAGGING_TIMESTAMPS_X_Y_Z
 UPDATE SourceExcerptTagging 
 SET SourceExcerptTaggingTaggedAt = MAX(IFNULL(SourceExcerptTaggingTaggedAt, ''), ?),
@@ -96,3 +111,4 @@ INSERT OR IGNORE INTO SourceExcerptTagging
 	(SourceExcerptId, MediaTagId)
 VALUES
 	(?, ?);
+

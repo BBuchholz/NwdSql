@@ -257,3 +257,21 @@ INSERT OR IGNORE INTO MediaDevicePath
 	(MediaId, MediaDeviceId, MediaPathId)
 VALUES
 	(?, ?, ?);
+
+--SELECT_MEDIA_WITH_DEVICE_PATHS_FOR_TAG_ID_X
+SELECT m.MediaHash,
+	   md.MediaDeviceDescription,
+	   mp.MediaPathValue  
+FROM MediaTagging mtg
+JOIN MediaTag mt
+ON mt.MediaTagId = mtg.MediaTagId
+JOIN Media m
+ON mtg.MediaId = m.MediaId
+JOIN MediaDevicePath mdp
+ON mdp.MediaId = m.MediaId
+JOIN MediaDevice md
+ON md.MediaDeviceId = mdp.MediaDeviceId
+JOIN MediaPath mp 
+ON mp.MediaPathId = mdp.MediaPathId
+WHERE mt.MediaTagId = ? 
+	

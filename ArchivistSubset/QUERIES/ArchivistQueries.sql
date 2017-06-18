@@ -112,3 +112,27 @@ INSERT OR IGNORE INTO SourceExcerptTagging
 VALUES
 	(?, ?);
 
+-- SELECT_EXCERPTS_WITH_SOURCE_FOR_TAG_ID_X
+SELECT  sext.SourceExcerptTaggingId,
+		se.SourceExcerptId,
+		se.SourceExcerptValue,
+		mt.MediaTagId,
+		mt.MediaTagValue,
+		s.SourceId,
+		s.SourceAuthor,
+		s.SourceTitle,
+		s.SourceUrl,
+		st.SourceTypeValue
+FROM SourceExcerpt se 
+JOIN Source s
+ON se.SourceId = s.SourceId
+JOIN SourceType st
+ON s.SourceTypeId = st.SourceTypeId
+LEFT JOIN SourceExcerptTagging sext
+ON se.SourceExcerptId = sext.SourceExcerptId
+LEFT JOIN MediaTag mt
+ON sext.MediaTagId = mt.MediaTagId
+WHERE sext.SourceExcerptId IN (SELECT SourceExcerptId FROM SourceExcerptTagging WHERE MediaTagId = ? )
+AND IFNULL(sext.SourceExcerptTaggingTaggedAt, '') >= IFNULL(sext.SourceExcerptTaggingUntaggedAt, '');
+
+

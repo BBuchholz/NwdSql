@@ -111,3 +111,28 @@
 "	(" + COLUMN_SOURCE_EXCERPT_ID + ", " + COLUMN_MEDIA_TAG_ID + ") " +
 "VALUES " +
 "	(?, ?); "
+
+-- SELECT_EXCERPTS_WITH_SOURCE_FOR_TAG_ID_X
+"SELECT sext." + COLUMN_SOURCE_EXCERPT_TAGGING_ID + ", " + 
+"		se." + COLUMN_SOURCE_EXCERPT_ID + ", " + 
+"		se." + COLUMN_SOURCE_EXCERPT_VALUE + ", " + 
+"		mt." + COLUMN_MEDIA_TAG_ID + ", " + 
+"		mt." + COLUMN_MEDIA_TAG_VALUE + ", " + 
+"		s." + COLUMN_SOURCE_ID + ", " + 
+"		s." + COLUMN_SOURCE_AUTHOR + ", " + 
+"		s." + COLUMN_SOURCE_TITLE + ", " + 
+"		s." + COLUMN_SOURCE_URL + ", " + 
+"		st." + COLUMN_SOURCE_TYPE_VALUE + " " + 
+"FROM " + TABLE_SOURCE_EXCERPT + " se  " + 
+"JOIN " + TABLE_SOURCE + " s " + 
+"ON se." + COLUMN_SOURCE_ID + " = s." + COLUMN_SOURCE_ID + " " + 
+"JOIN " + TABLE_SOURCE_TYPE + " st " + 
+"ON s." + COLUMN_SOURCE_TYPE_ID + " = st." + COLUMN_SOURCE_TYPE_ID + " " + 
+"LEFT JOIN " + TABLE_SOURCE_EXCERPT_TAGGING + " sext " + 
+"ON se." + COLUMN_SOURCE_EXCERPT_ID + " = sext." + COLUMN_SOURCE_EXCERPT_ID + " " + 
+"LEFT JOIN " + TABLE_MEDIA_TAG + " mt " + 
+"ON sext." + COLUMN_MEDIA_TAG_ID + " = mt." + COLUMN_MEDIA_TAG_ID + " " + 
+"WHERE sext." + COLUMN_SOURCE_EXCERPT_ID + " IN (SELECT " + COLUMN_SOURCE_EXCERPT_ID + " FROM " + TABLE_SOURCE_EXCERPT_TAGGING + " WHERE " + COLUMN_MEDIA_TAG_ID + " = ? ) " + 
+"AND IFNULL(sext." + COLUMN_SOURCE_EXCERPT_TAGGING_TAGGED_AT + ", '') >= IFNULL(sext." + COLUMN_SOURCE_EXCERPT_TAGGING_UNTAGGED_AT + ", ''); "
+
+

@@ -275,3 +275,19 @@ JOIN MediaPath mp
 ON mp.MediaPathId = mdp.MediaPathId
 WHERE mt.MediaTagId = ? 
 	
+-- GET_PATH_TAGS_FOR_DEVICE_NAME_X
+SELECT mt.MediaTagValue,
+	   mp.MediaPathValue
+FROM MediaTag mt
+JOIN MediaTagging mtg
+ON mt.MediaTagId = mtg.MediaTagId
+JOIN Media m
+ON mtg.MediaId = m.MediaId
+JOIN MediaDevicePath mdp
+ON m.MediaId = mdp.MediaId
+JOIN MediaPath mp
+ON mp.MediaPathId = mdp.MediaPathId
+JOIN MediaDevice md 
+ON mdp.MediaDeviceId = md.MediaDeviceId
+WHERE md.MediaDeviceDescription = ?
+AND IFNULL(mtg.MediaTaggingTaggedAt, '') >= IFNULL(mtg.MediaTaggingUntaggedAt, '')

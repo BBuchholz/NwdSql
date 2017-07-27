@@ -22,7 +22,7 @@ SELECT SynergyListId
 FROM SynergyList 
 WHERE SynergyListName = ? ;
 
--- Get ID and TimeStamps for ListName
+-- SYNERGY_V5_SELECT_ID_ACTIVATED_AT_SHELVED_AT_FOR_LIST_NAME
 SELECT SynergyListId, 
 	   SynergyListActivatedAt, 
 	   SynergyListShelvedAt 

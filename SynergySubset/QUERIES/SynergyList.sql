@@ -63,7 +63,7 @@ JOIN SynergyItem si
 ON sli.SynergyItemId = si.SynergyItemId
 WHERE sli.SynergyListId = ? ;
 
--- SYNERGY_V5_SELECT_ITEM_VALUES_BY_POSITION_FOR_LIST_ID_X
+-- SYNERGY_V5_SELECT_LIST_ITEMS_AND_TODOS_BY_POSITION_FOR_LIST_ID_X
 SELECT si.SynergyItemId, 
 	   si.SynergyItemValue, 
 	   sli.SynergyListItemPosition,
@@ -142,3 +142,39 @@ WHERE (sl.SynergyListShelvedAt IS NULL
    OR sl.SynergyListActivatedAt >= sl.SynergyListShelvedAt)
 GROUP BY sl.SynergyListName
 ORDER BY sl.SynergyListName;
+
+-- SYNERGY_V5_SELECT_ACTIVE_ITEMS_AND_TODOS_BY_POSITION_FOR_LIST_ID_X
+SELECT si.SynergyItemId, 
+	   si.SynergyItemValue, 
+	   sli.SynergyListItemPosition,
+	   sli.SynergyListItemId,
+	   std.SynergyToDoId,
+	   std.SynergyToDoActivatedAt,
+	   std.SynergyToDoCompletedAt,
+	   std.SynergyToDoArchivedAt
+FROM SynergyListItem sli
+JOIN SynergyItem si
+ON sli.SynergyItemId = si.SynergyItemId
+LEFT JOIN SynergyToDo std
+ON sli.SynergyListItemId = std.SynergyListItemId
+WHERE sli.SynergyListId = ?  
+AND std.SynergyToDoActivatedAt >= std.SynergyToDoArchivedAt 
+ORDER BY sli.SynergyListItemPosition;
+
+-- SYNERGY_V5_SELECT_ARCHIVED_ITEMS_AND_TODOS_BY_POSITION_FOR_LIST_ID_X
+SELECT si.SynergyItemId, 
+	   si.SynergyItemValue, 
+	   sli.SynergyListItemPosition,
+	   sli.SynergyListItemId,
+	   std.SynergyToDoId,
+	   std.SynergyToDoActivatedAt,
+	   std.SynergyToDoCompletedAt,
+	   std.SynergyToDoArchivedAt
+FROM SynergyListItem sli
+JOIN SynergyItem si
+ON sli.SynergyItemId = si.SynergyItemId
+LEFT JOIN SynergyToDo std
+ON sli.SynergyListItemId = std.SynergyListItemId
+WHERE sli.SynergyListId = ?  
+AND std.SynergyToDoActivatedAt < std.SynergyToDoArchivedAt 
+ORDER BY sli.SynergyListItemPosition;

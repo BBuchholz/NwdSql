@@ -100,6 +100,11 @@ SET SourceExcerptTaggingTaggedAt = MAX(IFNULL(SourceExcerptTaggingTaggedAt, ''),
 	SourceExcerptTaggingUntaggedAt = MAX(IFNULL(SourceExcerptTaggingUntaggedAt, ''), ?)
 WHERE SourceExcerptTaggingId = ? ;
 
+-- UPDATE_SOURCE_TAG_WHERE_SOURCE_ID
+UPDATE Source
+SET SourceTag = ? 
+WHERE SourceId = ? ;
+
 -- SELECT_SOURCE_EXCERPT_TAGGING_ID_X_Y
 SELECT SourceExcerptTaggingId
 FROM SourceExcerptTagging

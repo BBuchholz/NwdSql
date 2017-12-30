@@ -11,7 +11,7 @@ CREATE TABLE Source (
 	SourceYear TEXT, 
 	SourceUrl TEXT, 
 	SourceRetrievalDate TEXT, 
-	SourceTag TEXT,
+	SourceTag TEXT UNIQUE,
 	SourceCreatedAt TEXT,
 	SourceUpdatedAt TEXT
 )

@@ -38,7 +38,7 @@ SELECT SourceId,
 FROM Source
 WHERE SourceTypeId = ?;
 
--- SELECT_SOURCE_ID_W_X_Y_Z
+-- SELECT_SOURCE_W_X_Y_Z
 SELECT SourceId,
 	   SourceTypeId,
 	   SourceTitle,
@@ -46,12 +46,26 @@ SELECT SourceId,
 	   SourceDirector,
 	   SourceYear,
 	   SourceUrl,
-	   SourceRetrievalDate 
+	   SourceRetrievalDate,
+	   SourceTag
 FROM Source 
 WHERE SourceTypeId = ? 
 AND TRIM(IFNULL(SourceTitle, '')) = TRIM(IFNULL(?, '')) 
 AND TRIM(IFNULL(SourceYear, '')) = TRIM(IFNULL(?, '')) 
 AND TRIM(IFNULL(SourceUrl, '')) = TRIM(IFNULL(?, ''));
+
+-- SELECT_SOURCE_BY_ID
+SELECT SourceId,
+	   SourceTypeId,
+	   SourceTitle,
+	   SourceAuthor,
+	   SourceDirector,
+	   SourceYear,
+	   SourceUrl,
+	   SourceRetrievalDate,
+	   SourceTag
+FROM Source 
+WHERE SourceId = ?;
 
 -- INSERT_SOURCE_T_U_V_W_X_Y_Z
 INSERT OR IGNORE INTO Source

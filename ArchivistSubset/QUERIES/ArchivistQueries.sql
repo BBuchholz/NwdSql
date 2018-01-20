@@ -154,4 +154,43 @@ ON sext.MediaTagId = mt.MediaTagId
 WHERE sext.SourceExcerptId IN (SELECT SourceExcerptId FROM SourceExcerptTagging WHERE MediaTagId = ? )
 AND IFNULL(sext.SourceExcerptTaggingTaggedAt, '') >= IFNULL(sext.SourceExcerptTaggingUntaggedAt, '');
 
+-- SELECT_SOURCE_EXCERPT_BY_ID
+SELECT SourceExcerptId, 
+	   SourceId, 
+	   SourceExcerptValue, 
+	   SourceExcerptPages, 
+	   SourceExcerptBeginTime, 
+	   SourceExcerptEndTime 
+FROM SourceExcerpt 
+WHERE SourceExcerptId = ? ;
+
+-- SELECT_SOURCE_EXCERPT_ANNOTATIONS_BY_SOURCE_EXCERPT_ID
+SELECT sea.SourceExcerptAnnotationId, 
+	   sea.SourceExcerptId, 
+	   sa.SourceAnnotationId, 
+	   sa.SourceAnnotationValue 
+FROM SourceExcerptAnnotation sea 
+JOIN SourceAnnotation sa 
+ON sea.SourceAnnotationId = sa.SourceAnnotationId
+WHERE sea.SourceExcerptId = ? ;
+
+-- SELECT_SOURCE_ANNOTATION_ID_FOR_ANNOTATION_VALUE
+SELECT SourceAnnotationId
+FROM SourceAnnotation
+WHERE SourceAnnotationValue = ? ;
+
+-- INSERT_OR_IGNORE_SOURCE_ANNOTATION_VALUE
+INSERT OR IGNORE INTO SourceAnnotation
+	(SourceAnnotationValue)
+VALUES
+	(?) ;
+
+-- INSERT_OR_IGNORE_SOURCE_EXCERPT_ANNOTATION_EXCERPT_ID_ANNOTATION_ID_X_Y
+INSERT OR IGNORE INTO SourceExcerptAnnotation
+	(SourceExcerptId,
+	 SourceAnnotationId)
+VALUES
+	(?,?) ;
+
+
 

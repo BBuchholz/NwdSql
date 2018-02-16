@@ -286,15 +286,47 @@
 "FROM MediaTag mt " +
 "JOIN MediaTagging mtg " +
 "ON mt." + COLUMN_MEDIA_TAG_ID + " = mtg." + COLUMN_MEDIA_TAG_ID + " " +
-"JOIN Media m " +
+"JOIN " + TABLE_MEDIA + " m " +
 "ON mtg." + COLUMN_MEDIA_ID + " = m." + COLUMN_MEDIA_ID + " " +
-"JOIN MediaDevicePath mdp " +
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " +
 "ON m." + COLUMN_MEDIA_ID + " = mdp." + COLUMN_MEDIA_ID + " " +
 "JOIN MediaPath mp " +
 "ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " +
-"JOIN MediaDevice md  " +
+"JOIN " + TABLE_MEDIA_DEVICE + " md  " +
 "ON mdp." + COLUMN_MEDIA_DEVICE_ID + " = md." + COLUMN_MEDIA_DEVICE_ID + " " +
 "WHERE md." + COLUMN_MEDIA_DEVICE_DESCRIPTION + " = ? " +
 "AND IFNULL(mtg." + COLUMN_MEDIA_TAGGING_TAGGED_AT + ", '') >= IFNULL(mtg." + COLUMN_MEDIA_TAGGING_UNTAGGED_AT + ", '') " 
 
+-- GET_PATH_TAGS_FOR_ALL_DEVICES
+"SELECT mt." + COLUMN_MEDIA_TAG_VALUE + ", " +
+"	   mp." + COLUMN_MEDIA_PATH_VALUE + " " +
+"FROM MediaTag mt " +
+"JOIN MediaTagging mtg " +
+"ON mt." + COLUMN_MEDIA_TAG_ID + " = mtg." + COLUMN_MEDIA_TAG_ID + " " +
+"JOIN " + TABLE_MEDIA + " m " +
+"ON mtg." + COLUMN_MEDIA_ID + " = m." + COLUMN_MEDIA_ID + " " +
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " +
+"ON m." + COLUMN_MEDIA_ID + " = mdp." + COLUMN_MEDIA_ID + " " +
+"JOIN MediaPath mp " +
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " +
+"JOIN " + TABLE_MEDIA_DEVICE + " md  " +
+"ON mdp." + COLUMN_MEDIA_DEVICE_ID + " = md." + COLUMN_MEDIA_DEVICE_ID + " " +
+"WHERE IFNULL(mtg." + COLUMN_MEDIA_TAGGING_TAGGED_AT + ", '') >= IFNULL(mtg." + COLUMN_MEDIA_TAGGING_UNTAGGED_AT + ", '') " 
 
+-- SELECT_MEDIA_HASH_FOR_MEDIA_PATH
+"SELECT m." + COLUMN_MEDIA_HASH + "  " +
+"FROM " + TABLE_MEDIA_PATH + " mp " +
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " +
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " +
+"JOIN " + TABLE_MEDIA + " m " +
+"ON mdp." + COLUMN_MEDIA_ID + " = m." + COLUMN_MEDIA_ID + " " +
+"WHERE mp." + COLUMN_MEDIA_PATH_VALUE + " = ? ; " 
+
+-- SELECT_MEDIA_DEVICE_DESCRIPTION_FOR_MEDIA_PATH
+"SELECT md." + COLUMN_MEDIA_DEVICE_DESCRIPTION + "  " +
+"FROM " + TABLE_MEDIA_PATH + " mp " +
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp " +
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " +
+"JOIN " + TABLE_MEDIA_DEVICE + " md " +
+"ON mdp." + COLUMN_MEDIA_DEVICE_ID + " = md." + COLUMN_MEDIA_DEVICE_ID + " " +
+"WHERE mp." + COLUMN_MEDIA_PATH_VALUE + " = ? ; " 

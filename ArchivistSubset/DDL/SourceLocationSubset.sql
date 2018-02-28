@@ -4,9 +4,11 @@
 -- table
 CREATE TABLE SourceLocationSubset (
 	SourceLocationSubsetId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceLocationSubsetValue TEXT NOT NULL UNIQUE,
+	SourceLocationId INTEGER NOT NULL REFERENCES SourceLocation (SourceLocationId), 
+	SourceLocationSubsetValue TEXT NOT NULL,
 	SourceLocationSubsetCreatedAt TEXT,
-	SourceLocationSubsetUpdatedAt TEXT
+	SourceLocationSubsetUpdatedAt TEXT,
+	UNIQUE(SourceLocationId, SourceLocationSubsetValue)
 )
 
 -- updated at trigger

@@ -1,0 +1,21 @@
+Archivist ERD Notes
+
+	SourceLocation
+
+		Examples
+			“Brent Buchholz Google Drive”
+			“Brent Buchholz Scribd Account”
+			“CMG Occult Books Google Drive Share” 
+
+	SourceLocationSubset
+
+		Examples
+			“NWD-MEDIA/pdfs folder”
+			“Occult Scribd List”
+			“Chaos Magick Folder”
+
+	SourceLocationSubsetEntry
+		1) Ties sources to source location subsets
+		2) “Value” field for the source name
+		3) Many-to-many cuz the same source may have multiple files/versions with different names in the same location subset
+		4) Has a “SourceVerifiedPresent” and “SourceVerifiedMissing” like media tagging “TaggedAt” and “UntaggedAt”

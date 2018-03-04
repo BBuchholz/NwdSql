@@ -208,5 +208,22 @@ INSERT OR IGNORE INTO SourceLocation
 VALUES 
 	(?);
 
+-- SELECT_SOURCE_LOCATION_SUBSETS_BY_LOCATION_ID_X
+SELECT SourceLocationSubsetId,
+	   SourceLocationId,
+	   SourceLocationSubsetValue
+FROM SourceLocationSubset
+WHERE SourceLocationId = ? ;
 
+-- SELECT_SOURCE_LOCATION_SUBSET_ID_FOR_LOCATION_ID_AND_SUBSET_VALUE_X_Y
+SELECT SourceLocationSubsetId
+FROM SourceLocationSubset
+WHERE SourceLocationId = ? 
+AND SourceLocationSubsetValue = ? ;
 
+-- INSERT_OR_IGNORE_SOURCE_LOCATION_SUBSET_FOR_LOCATION_ID_AND_SUBSET_VALUE_X_Y
+INSERT OR IGNORE INTO SourceLocationSubset
+	(SourceLocationId, 
+	 SourceLocationSubsetValue)
+VALUES 
+	(?,?);

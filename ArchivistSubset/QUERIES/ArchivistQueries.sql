@@ -192,5 +192,21 @@ INSERT OR IGNORE INTO SourceExcerptAnnotation
 VALUES
 	(?,?) ;
 
+-- SELECT_LOCATION_ID_LOCATION_VALUE_FROM_SOURCE_TYPE
+SELECT SourceLocationId, 
+	   SourceLocationValue 
+FROM SourceLocation;
+
+-- SELECT_SOURCE_LOCATION_ID_FOR_VALUE_X
+SELECT SourceLocationId
+FROM SourceLocation
+WHERE SourceLocationValue = ? ;
+
+-- INSERT_OR_IGNORE_SOURCE_LOCATION_VALUE
+INSERT OR IGNORE INTO SourceLocation 
+	(SourceLocationValue)
+VALUES 
+	(?);
+
 
 

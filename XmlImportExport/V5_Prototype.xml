@@ -43,4 +43,47 @@
 			</synergyItem>
 		</synergyList>
 	</synergySubset>
+	<archivistSubset>
+    	<source type="SourceTypeValue"
+    			author="SourceAuthor"
+    			director="SourceDirector"
+    			title="SourceTitle"
+    			year="SourceYear"
+    			url="SourceUrl"
+    			retrievalDate="SourceRetrievalDate"
+    			tag="SourceTag">
+      		<sourceLocationSubsetEntry location="Brent Buchholz Google Drive"
+         						 	   locationSubset="NWD-MEDIA/pdfs folder"
+         						 	   locationSubsetEntry="some_pdf_file.pdf"
+         						 	   verifiedPresent="2016-10-31 13:13:13"
+         						 	   verifiedMissing="2017-11-01 15:05:44"/>
+      		<sourceLocationSubsetEntry location="Brent Buchholz Google Drive"
+         						 	   locationSubset="NWD-MEDIA/pdfs folder"
+         						 	   locationSubsetEntry="differently_named_file.pdf"
+         						 	   verifiedPresent="2016-10-31 13:13:13"
+         						 	   verifiedMissing="2017-11-01 15:05:44"/>
+      		<sourceExcerpt pages="SourceExcerptPages" 
+      					   beginTime="SourceExcerptBeginTime" 
+      					   endTime="SourceExcerptEndTime">
+        		<sourceExcerptValue>
+          			Source excerpt value field goes here
+      			</sourceExcerptValue>
+      			<sourceExcerptAnnotation linkedAt="2016-10-31 13:13:13"
+      									 unlinkedAt="2017-11-01 15:05:44">
+      				<sourceExcerptAnnotationValue>
+      					A source excerpt annotation value field goes here
+      				</sourceExcerptAnnotationValue>
+      			</sourceExcerptAnnotation>
+      			<sourceExcerptAnnotation linkedAt="2016-10-31 13:13:13"
+      									 unlinkedAt="2017-11-01 15:05:44">
+      				<sourceExcerptAnnotationValue>
+      					Another source excerpt annotation value field goes here
+      				</sourceExcerptAnnotationValue>
+      			</sourceExcerptAnnotation>
+      			<tag tagValue='tag2' 
+		    	     taggedAt='2016-11-03 11:24:00' 
+		    	     untaggedAt='2016-11-02 10:24:00'/>	
+        	</sourceExcerpt>
+        </source>
+    </archivistSubset>
 </nwd>

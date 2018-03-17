@@ -235,31 +235,31 @@
 
 
 -- CREATE_SOURCE_LOCATION
-CREATE TABLE SourceLocation (
-	SourceLocationId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceLocationValue TEXT NOT NULL UNIQUE,
-	SourceLocationCreatedAt TEXT,
-	SourceLocationUpdatedAt TEXT
-)
+"CREATE TABLE SourceLocation ( " +
+"	SourceLocationId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " +
+"	SourceLocationValue TEXT NOT NULL UNIQUE, " +
+"	SourceLocationCreatedAt TEXT, " +
+"	SourceLocationUpdatedAt TEXT " +
+") " 
 
 -- CREATE_SOURCE_LOCATION_CREATED_TRIGGER
-CREATE TRIGGER SetSourceLocationCreatedAt 
-AFTER INSERT ON SourceLocation
-BEGIN
-UPDATE SourceLocation 
-	SET SourceLocationCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceLocationUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceLocation.SourceLocationId = NEW.SourceLocationId;
-END
+"CREATE TRIGGER SetSourceLocationCreatedAt  " +
+"AFTER INSERT ON SourceLocation " +
+"BEGIN " +
+"UPDATE SourceLocation  " +
+"	SET SourceLocationCreatedAt = CURRENT_TIMESTAMP,  " +
+"		   SourceLocationUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceLocation.SourceLocationId = NEW.SourceLocationId; " +
+"END " 
 
 -- CREATE_SOURCE_LOCATION_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceLocationUpdatedAt
-AFTER UPDATE ON SourceLocation
-BEGIN
-UPDATE SourceLocation 
-	SET SourceLocationUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceLocation.SourceLocationId = NEW.SourceLocationId;
-END
+"CREATE TRIGGER SetSourceLocationUpdatedAt " +
+"AFTER UPDATE ON SourceLocation " +
+"BEGIN " +
+"UPDATE SourceLocation  " +
+"	SET SourceLocationUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceLocation.SourceLocationId = NEW.SourceLocationId; " +
+"END " 
 
 
 
@@ -268,31 +268,31 @@ END
 
 
 -- CREATE_SOURCE_ANNOTATION
-CREATE TABLE SourceAnnotation (
-	SourceAnnotationId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceAnnotationValue TEXT NOT NULL UNIQUE,
-	SourceAnnotationCreatedAt TEXT,
-	SourceAnnotationUpdatedAt TEXT
-)
+"CREATE TABLE SourceAnnotation ( " +
+"	SourceAnnotationId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " +
+"	SourceAnnotationValue TEXT NOT NULL UNIQUE, " +
+"	SourceAnnotationCreatedAt TEXT, " +
+"	SourceAnnotationUpdatedAt TEXT " +
+") " 
 
 -- CREATE_SOURCE_ANNOTATION_CREATED_TRIGGER
-CREATE TRIGGER SetSourceAnnotationCreatedAt 
-AFTER INSERT ON SourceAnnotation
-BEGIN
-UPDATE SourceAnnotation 
-	SET SourceAnnotationCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceAnnotationUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceAnnotation.SourceAnnotationId = NEW.SourceAnnotationId;
-END
+"CREATE TRIGGER SetSourceAnnotationCreatedAt  " +
+"AFTER INSERT ON SourceAnnotation " +
+"BEGIN " +
+"UPDATE SourceAnnotation  " +
+"	SET SourceAnnotationCreatedAt = CURRENT_TIMESTAMP,  " +
+"		   SourceAnnotationUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceAnnotation.SourceAnnotationId = NEW.SourceAnnotationId; " +
+"END " 
 
 -- CREATE_SOURCE_ANNOTATION_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceAnnotationUpdatedAt
-AFTER UPDATE ON SourceAnnotation
-BEGIN
-UPDATE SourceAnnotation 
-	SET SourceAnnotationUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceAnnotation.SourceAnnotationId = NEW.SourceAnnotationId;
-END
+"CREATE TRIGGER SetSourceAnnotationUpdatedAt " +
+"AFTER UPDATE ON SourceAnnotation " +
+"BEGIN " +
+"UPDATE SourceAnnotation  " +
+"	SET SourceAnnotationUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceAnnotation.SourceAnnotationId = NEW.SourceAnnotationId; " +
+"END " 
 
 
 
@@ -300,31 +300,31 @@ END
 
 
 -- CREATE_SOURCE_TYPE
-CREATE TABLE SourceType (
-	SourceTypeId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceTypeValue TEXT NOT NULL UNIQUE,
-	SourceTypeCreatedAt TEXT,
-	SourceTypeUpdatedAt TEXT
-)
+"CREATE TABLE SourceType ( " +
+"	SourceTypeId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " +
+"	SourceTypeValue TEXT NOT NULL UNIQUE, " +
+"	SourceTypeCreatedAt TEXT, " +
+"	SourceTypeUpdatedAt TEXT " +
+") " 
 
 -- CREATE_SOURCE_TYPE_CREATED_TRIGGER
-CREATE TRIGGER SetSourceTypeCreatedAt 
-AFTER INSERT ON SourceType
-BEGIN
-UPDATE SourceType 
-	SET SourceTypeCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceTypeUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceType.SourceTypeId = NEW.SourceTypeId;
-END
+"CREATE TRIGGER SetSourceTypeCreatedAt  " +
+"AFTER INSERT ON SourceType " +
+"BEGIN " +
+"UPDATE SourceType  " +
+"	SET SourceTypeCreatedAt = CURRENT_TIMESTAMP,  " +
+"		   SourceTypeUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceType.SourceTypeId = NEW.SourceTypeId; " +
+"END " 
 
 -- CREATE_SOURCE_TYPE_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceTypeUpdatedAt
-AFTER UPDATE ON SourceType
-BEGIN
-UPDATE SourceType 
-	SET SourceTypeUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceType.SourceTypeId = NEW.SourceTypeId;
-END
+"CREATE TRIGGER SetSourceTypeUpdatedAt " +
+"AFTER UPDATE ON SourceType " +
+"BEGIN " +
+"UPDATE SourceType  " +
+"	SET SourceTypeUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceType.SourceTypeId = NEW.SourceTypeId; " +
+"END " 
 
 
 
@@ -332,38 +332,38 @@ END
 
 
 -- CREATE_SOURCE
-CREATE TABLE Source (
-	SourceId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceTypeId INTEGER NOT NULL REFERENCES SourceType (SourceTypeId),
-	SourceAuthor TEXT,
-	SourceDirector TEXT, 
-	SourceTitle TEXT, 
-	SourceYear TEXT, 
-	SourceUrl TEXT, 
-	SourceRetrievalDate TEXT, 
-	SourceTag TEXT UNIQUE,
-	SourceCreatedAt TEXT,
-	SourceUpdatedAt TEXT
-)
+"CREATE TABLE Source ( " +
+"	SourceId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " +
+"	SourceTypeId INTEGER NOT NULL REFERENCES SourceType (SourceTypeId), " +
+"	SourceAuthor TEXT, " +
+"	SourceDirector TEXT,  " +
+"	SourceTitle TEXT,  " +
+"	SourceYear TEXT,  " +
+"	SourceUrl TEXT,  " +
+"	SourceRetrievalDate TEXT,  " +
+"	SourceTag TEXT UNIQUE, " +
+"	SourceCreatedAt TEXT, " +
+"	SourceUpdatedAt TEXT " +
+") " 
 
 -- CREATE_SOURCE_CREATED_TRIGGER
-CREATE TRIGGER SetSourceCreatedAt 
-AFTER INSERT ON Source
-BEGIN
-UPDATE Source 
-	SET SourceCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceUpdatedAt = CURRENT_TIMESTAMP
-	WHERE Source.SourceId = NEW.SourceId;
-END
+"CREATE TRIGGER SetSourceCreatedAt  " +
+"AFTER INSERT ON Source " +
+"BEGIN " +
+"UPDATE Source  " +
+"	SET SourceCreatedAt = CURRENT_TIMESTAMP,  " +
+"		   SourceUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE Source.SourceId = NEW.SourceId; " +
+"END " 
 
 -- CREATE_SOURCE_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceUpdatedAt
-AFTER UPDATE ON Source
-BEGIN
-UPDATE Source 
-	SET SourceUpdatedAt = CURRENT_TIMESTAMP
-	WHERE Source.SourceId = NEW.SourceId;
-END
+"CREATE TRIGGER SetSourceUpdatedAt " +
+"AFTER UPDATE ON Source " +
+"BEGIN " +
+"UPDATE Source  " +
+"	SET SourceUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE Source.SourceId = NEW.SourceId; " +
+"END " 
 
 
 
@@ -371,33 +371,33 @@ END
 
 
 -- CREATE_SOURCE_LOCATION_SUBSET
-CREATE TABLE SourceLocationSubset (
-	SourceLocationSubsetId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceLocationId INTEGER NOT NULL REFERENCES SourceLocation (SourceLocationId), 
-	SourceLocationSubsetValue TEXT NOT NULL,
-	SourceLocationSubsetCreatedAt TEXT,
-	SourceLocationSubsetUpdatedAt TEXT,
-	UNIQUE(SourceLocationId, SourceLocationSubsetValue)
-)
+"CREATE TABLE SourceLocationSubset ( " +
+"	SourceLocationSubsetId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " +
+"	SourceLocationId INTEGER NOT NULL REFERENCES SourceLocation (SourceLocationId),  " +
+"	SourceLocationSubsetValue TEXT NOT NULL, " +
+"	SourceLocationSubsetCreatedAt TEXT, " +
+"	SourceLocationSubsetUpdatedAt TEXT, " +
+"	UNIQUE(SourceLocationId, SourceLocationSubsetValue) " +
+") " 
 
 -- CREATE_SOURCE_LOCATION_SUBSET_CREATED_TRIGGER
-CREATE TRIGGER SetSourceLocationSubsetCreatedAt 
-AFTER INSERT ON SourceLocationSubset
-BEGIN
-UPDATE SourceLocationSubset 
-	SET SourceLocationSubsetCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceLocationSubsetUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceLocationSubset.SourceLocationSubsetId = NEW.SourceLocationSubsetId;
-END
+"CREATE TRIGGER SetSourceLocationSubsetCreatedAt  " +
+"AFTER INSERT ON SourceLocationSubset " +
+"BEGIN " +
+"UPDATE SourceLocationSubset  " +
+"	SET SourceLocationSubsetCreatedAt = CURRENT_TIMESTAMP,  " +
+"		   SourceLocationSubsetUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceLocationSubset.SourceLocationSubsetId = NEW.SourceLocationSubsetId; " +
+"END " 
 
 -- CREATE_SOURCE_LOCATION_SUBSET_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceLocationSubsetUpdatedAt
-AFTER UPDATE ON SourceLocationSubset
-BEGIN
-UPDATE SourceLocationSubset 
-	SET SourceLocationSubsetUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceLocationSubset.SourceLocationSubsetId = NEW.SourceLocationSubsetId;
-END
+"CREATE TRIGGER SetSourceLocationSubsetUpdatedAt " +
+"AFTER UPDATE ON SourceLocationSubset " +
+"BEGIN " +
+"UPDATE SourceLocationSubset  " +
+"	SET SourceLocationSubsetUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceLocationSubset.SourceLocationSubsetId = NEW.SourceLocationSubsetId; " +
+"END " 
 
 
 
@@ -405,36 +405,36 @@ END
 
 
 -- CREATE_SOURCE_LOCATION_SUBSET_ENTRY
-CREATE TABLE SourceLocationSubsetEntry (
-	SourceLocationSubsetEntryId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceLocationSubsetId INTEGER NOT NULL REFERENCES SourceLocationSubset (SourceLocationSubsetId),
-	SourceId INTEGER NOT NULL REFERENCES Source (SourceId), 
-	SourceLocationSubsetEntryValue TEXT NOT NULL UNIQUE,
-	SourceLocationSubsetEntryVerifiedPresentAt TEXT,
-	SourceLocationSubsetEntryVerifiedMissingAt TEXT,
-	SourceLocationSubsetEntryCreatedAt TEXT,
-	SourceLocationSubsetEntryUpdatedAt TEXT,
-	UNIQUE(SourceLocationSubsetId, SourceId, SourceLocationSubsetEntryValue)
-)
+"CREATE TABLE SourceLocationSubsetEntry ( " +
+"	SourceLocationSubsetEntryId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " +
+"	SourceLocationSubsetId INTEGER NOT NULL REFERENCES SourceLocationSubset (SourceLocationSubsetId), " +
+"	SourceId INTEGER NOT NULL REFERENCES Source (SourceId),  " +
+"	SourceLocationSubsetEntryValue TEXT NOT NULL UNIQUE, " +
+"	SourceLocationSubsetEntryVerifiedPresentAt TEXT, " +
+"	SourceLocationSubsetEntryVerifiedMissingAt TEXT, " +
+"	SourceLocationSubsetEntryCreatedAt TEXT, " +
+"	SourceLocationSubsetEntryUpdatedAt TEXT, " +
+"	UNIQUE(SourceLocationSubsetId, SourceId, SourceLocationSubsetEntryValue) " +
+") " 
 
 -- CREATE_SOURCE_LOCATION_SUBSET_ENTRY_CREATED_TRIGGER
-CREATE TRIGGER SetSourceLocationSubsetEntryCreatedAt 
-AFTER INSERT ON SourceLocationSubsetEntry
-BEGIN
-UPDATE SourceLocationSubsetEntry 
-	SET SourceLocationSubsetEntryCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceLocationSubsetEntryUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceLocationSubsetEntry.SourceLocationSubsetEntryId = NEW.SourceLocationSubsetEntryId;
-END
+"CREATE TRIGGER SetSourceLocationSubsetEntryCreatedAt  " +
+"AFTER INSERT ON SourceLocationSubsetEntry " +
+"BEGIN " +
+"UPDATE SourceLocationSubsetEntry  " +
+"	SET SourceLocationSubsetEntryCreatedAt = CURRENT_TIMESTAMP,  " +
+"		   SourceLocationSubsetEntryUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceLocationSubsetEntry.SourceLocationSubsetEntryId = NEW.SourceLocationSubsetEntryId; " +
+"END " 
 
 -- CREATE_SOURCE_LOCATION_SUBSET_ENTRY_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceLocationSubsetEntryUpdatedAt
-AFTER UPDATE ON SourceLocationSubsetEntry
-BEGIN
-UPDATE SourceLocationSubsetEntry 
-	SET SourceLocationSubsetEntryUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceLocationSubsetEntry.SourceLocationSubsetEntryId = NEW.SourceLocationSubsetEntryId;
-END
+"CREATE TRIGGER SetSourceLocationSubsetEntryUpdatedAt " +
+"AFTER UPDATE ON SourceLocationSubsetEntry " +
+"BEGIN " +
+"UPDATE SourceLocationSubsetEntry  " +
+"	SET SourceLocationSubsetEntryUpdatedAt = CURRENT_TIMESTAMP " +
+"	WHERE SourceLocationSubsetEntry.SourceLocationSubsetEntryId = NEW.SourceLocationSubsetEntryId; " +
+"END " 
 
 
 
@@ -442,109 +442,109 @@ END
 
 
 -- CREATE_SOURCE_EXCERPT
-CREATE TABLE SourceExcerpt (
-	SourceExcerptId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceId INTEGER NOT NULL REFERENCES Source (SourceId),
-	SourceExcerptValue TEXT,
-	SourceExcerptPages TEXT, 
-	SourceExcerptBeginTime TEXT, 
-	SourceExcerptEndTime TEXT, 
-	SourceExcerptCreatedAt TEXT,
-	SourceExcerptUpdatedAt TEXT
-)
+"CREATE TABLE SourceExcerpt ( " + 
+"	SourceExcerptId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " + 
+"	SourceId INTEGER NOT NULL REFERENCES Source (SourceId), " + 
+"	SourceExcerptValue TEXT, " + 
+"	SourceExcerptPages TEXT,  " + 
+"	SourceExcerptBeginTime TEXT,  " + 
+"	SourceExcerptEndTime TEXT,  " + 
+"	SourceExcerptCreatedAt TEXT, " + 
+"	SourceExcerptUpdatedAt TEXT " + 
+") " 
 
--- CREATE_SOURCE_EXCERPT_CREATED_TRIGGER
-CREATE TRIGGER SetSourceExcerptCreatedAt 
-AFTER INSERT ON SourceExcerpt
-BEGIN
-UPDATE SourceExcerpt 
-	SET SourceExcerptCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceExcerptUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceExcerpt.SourceExcerptId = NEW.SourceExcerptId;
-END
+-- CREATE_SOURCE_EXCERPT_CREATED_TRIGGER 
+"CREATE TRIGGER SetSourceExcerptCreatedAt  " + 
+"AFTER INSERT ON SourceExcerpt " + 
+"BEGIN " + 
+"UPDATE SourceExcerpt  " + 
+"	SET SourceExcerptCreatedAt = CURRENT_TIMESTAMP,  " + 
+"		   SourceExcerptUpdatedAt = CURRENT_TIMESTAMP " + 
+"	WHERE SourceExcerpt.SourceExcerptId = NEW.SourceExcerptId; " + 
+"END " 
 
--- CREATE_SOURCE_EXCERPT_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceExcerptUpdatedAt
-AFTER UPDATE ON SourceExcerpt
-BEGIN
-UPDATE SourceExcerpt 
-	SET SourceExcerptUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceExcerpt.SourceExcerptId = NEW.SourceExcerptId;
-END
-
-
-
-
-
-
--- CREATE_SOURCE_EXCERPT_ANNOTATION
-CREATE TABLE SourceExcerptAnnotation (
-	SourceExcerptAnnotationId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceExcerptId INTEGER NOT NULL REFERENCES SourceExcerpt (SourceExcerptId), 
-	SourceAnnotationId INTEGER NOT NULL REFERENCES SourceAnnotation (SourceAnnotationId),
-	SourceExcerptAnnotationLinkedAt TEXT,
-	SourceExcerptAnnotationUnlinkedAt TEXT,
-	SourceExcerptAnnotationCreatedAt TEXT,
-	SourceExcerptAnnotationUpdatedAt TEXT, 
-	UNIQUE(SourceExcerptId, SourceAnnotationId)
-)
-
--- CREATE_SOURCE_EXCERPT_ANNOTATION_CREATED_TRIGGER
-CREATE TRIGGER SetSourceExcerptAnnotationCreatedAt 
-AFTER INSERT ON SourceExcerptAnnotation
-BEGIN
-UPDATE SourceExcerptAnnotation 
-	SET SourceExcerptAnnotationCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceExcerptAnnotationUpdatedAt = CURRENT_TIMESTAMP,
-		   SourceExcerptAnnotationLinkedAt = CURRENT_TIMESTAMP
-	WHERE SourceExcerptAnnotation.SourceExcerptAnnotationId = NEW.SourceExcerptAnnotationId;
-END
-
--- CREATE_SOURCE_EXCERPT_ANNOTATION_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceExcerptAnnotationUpdatedAt
-AFTER UPDATE ON SourceExcerptAnnotation
-BEGIN
-UPDATE SourceExcerptAnnotation 
-	SET SourceExcerptAnnotationUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceExcerptAnnotation.SourceExcerptAnnotationId = NEW.SourceExcerptAnnotationId;
-END
+-- CREATE_SOURCE_EXCERPT_UPDATED_TRIGGER 
+"CREATE TRIGGER SetSourceExcerptUpdatedAt " + 
+"AFTER UPDATE ON SourceExcerpt " + 
+"BEGIN " + 
+"UPDATE SourceExcerpt  " + 
+"	SET SourceExcerptUpdatedAt = CURRENT_TIMESTAMP " + 
+"	WHERE SourceExcerpt.SourceExcerptId = NEW.SourceExcerptId; " + 
+"END " 
 
 
 
 
 
 
--- CREATE_SOURCE_EXCERPT_TAGGING
-CREATE TABLE SourceExcerptTagging (
-	SourceExcerptTaggingId INTEGER NOT NULL PRIMARY KEY UNIQUE, 
-	SourceExcerptId INTEGER NOT NULL REFERENCES SourceExcerpt (SourceExcerptId), 
-	MediaTagId INTEGER NOT NULL REFERENCES MediaTag (MediaTagId),
-	SourceExcerptTaggingTaggedAt TEXT,
-	SourceExcerptTaggingUntaggedAt TEXT,
-	SourceExcerptTaggingCreatedAt TEXT,
-	SourceExcerptTaggingUpdatedAt TEXT, 
-	UNIQUE(SourceExcerptId, MediaTagId)
-)
+-- CREATE_SOURCE_EXCERPT_ANNOTATION 
+"CREATE TABLE SourceExcerptAnnotation ( " + 
+"	SourceExcerptAnnotationId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " + 
+"	SourceExcerptId INTEGER NOT NULL REFERENCES SourceExcerpt (SourceExcerptId),  " + 
+"	SourceAnnotationId INTEGER NOT NULL REFERENCES SourceAnnotation (SourceAnnotationId), " + 
+"	SourceExcerptAnnotationLinkedAt TEXT, " + 
+"	SourceExcerptAnnotationUnlinkedAt TEXT, " + 
+"	SourceExcerptAnnotationCreatedAt TEXT, " + 
+"	SourceExcerptAnnotationUpdatedAt TEXT,  " + 
+"	UNIQUE(SourceExcerptId, SourceAnnotationId) " + 
+") " 
 
--- CREATE_SOURCE_EXCERPT_TAGGING_CREATED_TRIGGER
-CREATE TRIGGER SetSourceExcerptTaggingCreatedAt 
-AFTER INSERT ON SourceExcerptTagging
-BEGIN
-UPDATE SourceExcerptTagging 
-	SET SourceExcerptTaggingCreatedAt = CURRENT_TIMESTAMP, 
-		   SourceExcerptTaggingUpdatedAt = CURRENT_TIMESTAMP,
-		   SourceExcerptTaggingTaggedAt = CURRENT_TIMESTAMP
-	WHERE SourceExcerptTagging.SourceExcerptTaggingId = NEW.SourceExcerptTaggingId;
-END
+-- CREATE_SOURCE_EXCERPT_ANNOTATION_CREATED_TRIGGER 
+"CREATE TRIGGER SetSourceExcerptAnnotationCreatedAt  " + 
+"AFTER INSERT ON SourceExcerptAnnotation " + 
+"BEGIN " + 
+"UPDATE SourceExcerptAnnotation  " + 
+"	SET SourceExcerptAnnotationCreatedAt = CURRENT_TIMESTAMP,  " + 
+"		   SourceExcerptAnnotationUpdatedAt = CURRENT_TIMESTAMP, " + 
+"		   SourceExcerptAnnotationLinkedAt = CURRENT_TIMESTAMP " + 
+"	WHERE SourceExcerptAnnotation.SourceExcerptAnnotationId = NEW.SourceExcerptAnnotationId; " + 
+"END " 
 
--- CREATE_SOURCE_EXCERPT_TAGGING_UPDATED_TRIGGER
-CREATE TRIGGER SetSourceExcerptTaggingUpdatedAt
-AFTER UPDATE ON SourceExcerptTagging
-BEGIN
-UPDATE SourceExcerptTagging 
-	SET SourceExcerptTaggingUpdatedAt = CURRENT_TIMESTAMP
-	WHERE SourceExcerptTagging.SourceExcerptTaggingId = NEW.SourceExcerptTaggingId;
-END
+-- CREATE_SOURCE_EXCERPT_ANNOTATION_UPDATED_TRIGGER 
+"CREATE TRIGGER SetSourceExcerptAnnotationUpdatedAt " + 
+"AFTER UPDATE ON SourceExcerptAnnotation " + 
+"BEGIN " + 
+"UPDATE SourceExcerptAnnotation  " + 
+"	SET SourceExcerptAnnotationUpdatedAt = CURRENT_TIMESTAMP " + 
+"	WHERE SourceExcerptAnnotation.SourceExcerptAnnotationId = NEW.SourceExcerptAnnotationId; " + 
+"END " 
+
+
+
+
+
+
+-- CREATE_SOURCE_EXCERPT_TAGGING 
+"CREATE TABLE SourceExcerptTagging ( " + 
+"	SourceExcerptTaggingId INTEGER NOT NULL PRIMARY KEY UNIQUE,  " + 
+"	SourceExcerptId INTEGER NOT NULL REFERENCES SourceExcerpt (SourceExcerptId),  " + 
+"	MediaTagId INTEGER NOT NULL REFERENCES MediaTag (MediaTagId), " + 
+"	SourceExcerptTaggingTaggedAt TEXT, " + 
+"	SourceExcerptTaggingUntaggedAt TEXT, " + 
+"	SourceExcerptTaggingCreatedAt TEXT, " + 
+"	SourceExcerptTaggingUpdatedAt TEXT,  " + 
+"	UNIQUE(SourceExcerptId, MediaTagId) " + 
+") " 
+
+-- CREATE_SOURCE_EXCERPT_TAGGING_CREATED_TRIGGER 
+"CREATE TRIGGER SetSourceExcerptTaggingCreatedAt  " + 
+"AFTER INSERT ON SourceExcerptTagging " + 
+"BEGIN " + 
+"UPDATE SourceExcerptTagging  " + 
+"	SET SourceExcerptTaggingCreatedAt = CURRENT_TIMESTAMP,  " + 
+"		   SourceExcerptTaggingUpdatedAt = CURRENT_TIMESTAMP, " + 
+"		   SourceExcerptTaggingTaggedAt = CURRENT_TIMESTAMP " + 
+"	WHERE SourceExcerptTagging.SourceExcerptTaggingId = NEW.SourceExcerptTaggingId; " + 
+"END " 
+
+-- CREATE_SOURCE_EXCERPT_TAGGING_UPDATED_TRIGGER 
+"CREATE TRIGGER SetSourceExcerptTaggingUpdatedAt " + 
+"AFTER UPDATE ON SourceExcerptTagging " + 
+"BEGIN " + 
+"UPDATE SourceExcerptTagging  " + 
+"	SET SourceExcerptTaggingUpdatedAt = CURRENT_TIMESTAMP " + 
+"	WHERE SourceExcerptTagging.SourceExcerptTaggingId = NEW.SourceExcerptTaggingId; " + 
+"END " 
 
 
 

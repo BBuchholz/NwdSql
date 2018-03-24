@@ -227,3 +227,33 @@ INSERT OR IGNORE INTO SourceLocationSubset
 	 SourceLocationSubsetValue)
 VALUES 
 	(?,?);
+
+-- SELECT_SOURCE_LOCATION_SUBSET_ENTRIES_FOR_SOURCE_ID_X
+SELECT slse.SourceLocationSubsetEntryId,
+	   slse.SourceLocationSubsetId,
+	   sl.SourceLocationValue,
+	   sls.SourceLocationSubsetValue,
+	   slse.SourceLocationSubsetEntryValue,
+	   slse.SourceLocationSubsetEntryVerifiedPresentAt,
+	   slse.SourceLocationSubsetEntryVerifiedMissingAt	   
+FROM SourceLocation sl
+JOIN SourceLocationSubset sls
+ON sl.SourceLocationId = sls.SourceLocationId
+JOIN SourceLocationSubsetEntry slse
+ON sls.SourceLocationSubsetId = slse.SourceLocationSubsetId
+WHERE slse.SourceId = ? ;
+
+-- INSERT_OR_IGNORE_INTO_SOURCE_LOCATION_SUBSET_ENTRY_VALUES_SUBSET_ID_SOURCE_ID_ENTRY_VALUE_X_Y_Z
+INSERT INTO SourceLocationSubsetEntry
+	(SourceLocationSubsetId,
+	 SourceId,
+	 SourceLocationSubsetEntryValue)
+ VALUES (?,?,?);
+
+-- SELECT_SOURCE_LOCATION_SUBSET_ENTRY_ID_FOR_SUBSET_ID_AND_SOURCE_ID_AND_ENTRY_VALUE_X_Y_Z
+SELECT SourceLocationSubsetEntryId
+FROM SourceLocationSubsetEntry
+WHERE SourceLocationSubsetId = ?
+AND SourceId = ? 
+AND SourceLocationSubsetEntryValue = ?;
+

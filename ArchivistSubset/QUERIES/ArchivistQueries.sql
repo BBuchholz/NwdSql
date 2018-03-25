@@ -243,6 +243,22 @@ JOIN SourceLocationSubsetEntry slse
 ON sls.SourceLocationSubsetId = slse.SourceLocationSubsetId
 WHERE slse.SourceId = ? ;
 
+-- SELECT_VERIFIED_PRESENT_SOURCE_LOCATION_SUBSET_ENTRIES_FOR_SOURCE_ID_X
+SELECT slse.SourceLocationSubsetEntryId,
+	   slse.SourceLocationSubsetId,
+	   sl.SourceLocationValue,
+	   sls.SourceLocationSubsetValue,
+	   slse.SourceLocationSubsetEntryValue,
+	   slse.SourceLocationSubsetEntryVerifiedPresentAt,
+	   slse.SourceLocationSubsetEntryVerifiedMissingAt	   
+FROM SourceLocation sl
+JOIN SourceLocationSubset sls
+ON sl.SourceLocationId = sls.SourceLocationId
+JOIN SourceLocationSubsetEntry slse
+ON sls.SourceLocationSubsetId = slse.SourceLocationSubsetId
+WHERE slse.SourceId = ? 
+AND slse.SourceLocationSubsetEntryVerifiedPresentAt >= slse.SourceLocationSubsetEntryVerifiedMissingAt;
+
 -- INSERT_OR_IGNORE_INTO_SOURCE_LOCATION_SUBSET_ENTRY_VALUES_SUBSET_ID_SOURCE_ID_ENTRY_VALUE_X_Y_Z
 INSERT INTO SourceLocationSubsetEntry
 	(SourceLocationSubsetId,

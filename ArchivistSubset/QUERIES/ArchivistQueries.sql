@@ -257,3 +257,8 @@ WHERE SourceLocationSubsetId = ?
 AND SourceId = ? 
 AND SourceLocationSubsetEntryValue = ?;
 
+-- UPDATE_SOURCE_LOCATION_SUBSET_ENTRY_VERIFIED_PRESENT_VERIFIED_MISSING_FOR_ID_X_Y_Z
+UPDATE SourceLocationSubsetEntry 
+SET SourceLocationSubsetEntryVerifiedPresentAt = MAX(IFNULL(SourceLocationSubsetEntryVerifiedPresentAt, ''), ?),
+	SourceLocationSubsetEntryVerifiedMissingAt = MAX(IFNULL(SourceLocationSubsetEntryVerifiedMissingAt, ''), ?)
+WHERE SourceLocationSubsetEntryId = ? ;

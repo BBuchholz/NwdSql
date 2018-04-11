@@ -8,11 +8,20 @@ SELECT SourceTypeId
 FROM SourceType
 WHERE SourceTypeValue = ? ;
 
--- SELECT_SOURCE_EXCERPT_TYPE_ID_X_Y
+-- SELECT_SOURCE_EXCERPT_ID_X_Y
 SELECT SourceExcerptId
 FROM SourceExcerpt
 WHERE SourceId = ?
 AND SourceExcerptValue = ? ;
+
+-- SELECT_SOURCE_EXCERPT_ID_FOR_SRCID_EXVAL_BTIME_ETIME_PGS_V_W_X_Y_Z
+SELECT SourceExcerptId
+FROM SourceExcerpt
+WHERE SourceId = ?
+AND SourceExcerptValue = ? 
+AND SourceExcerptBeginTime = ?
+AND SourceExcerptEndTime = ?
+AND SourceExcerptPages = ? ;
 
 -- INSERT_OR_IGNORE_SOURCE_TYPE_VALUE
 INSERT OR IGNORE INTO SourceType 
@@ -20,11 +29,17 @@ INSERT OR IGNORE INTO SourceType
 VALUES 
 	(?);
 
--- INSERT_OR_IGNORE_SOURCE_TYPE_VALUE
+-- INSERT_OR_IGNORE_SOURCE_EXCERPT_X_Y
 INSERT OR IGNORE INTO SourceExcerpt 
 	(SourceId, SourceExcerptValue)
 VALUES 
 	(?, ?);
+
+-- INSERT_OR_IGNORE_SOURCE_EXCERPT_SRCID_EXVAL_BTIME_ETIME_PGS_V_W_X_Y_Z
+INSERT OR IGNORE INTO SourceExcerpt 
+	(SourceId, SourceExcerptValue, SourceExcerptBeginTime, SourceExcerptEndTime, SourceExcerptPages)
+VALUES 
+	(?, ?, ?, ?, ?);
 
 -- SELECT_SOURCES_BY_TYPE_ID_X
 SELECT SourceId,

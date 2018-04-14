@@ -1,4 +1,4 @@
-<nwd>
+﻿<nwd>
 	<mnemosyneSubset>
 		<media sha1Hash='da39a3ee5e6b4b0d3255bfef95601890afd80709'
 			   fileName='someFile.txt'
@@ -68,14 +68,12 @@
         		<sourceExcerptValue>
           			Source excerpt value field goes here
       			</sourceExcerptValue>
-      			<sourceExcerptAnnotation linkedAt="2016-10-31 13:13:13"
-      									 unlinkedAt="2017-11-01 15:05:44">
+      			<sourceExcerptAnnotation>
       				<sourceExcerptAnnotationValue>
       					A source excerpt annotation value field goes here
       				</sourceExcerptAnnotationValue>
       			</sourceExcerptAnnotation>
-      			<sourceExcerptAnnotation linkedAt="2016-10-31 13:13:13"
-      									 unlinkedAt="2017-11-01 15:05:44">
+      			<sourceExcerptAnnotation>
       				<sourceExcerptAnnotationValue>
       					Another source excerpt annotation value field goes here
       				</sourceExcerptAnnotationValue>

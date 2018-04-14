@@ -53,6 +53,17 @@ SELECT SourceId,
 FROM Source
 WHERE SourceTypeId = ?;
 
+-- SELECT_SOURCES
+SELECT SourceId,
+	   SourceTypeId,
+	   SourceTitle,
+	   SourceAuthor,
+	   SourceDirector,
+	   SourceYear,
+	   SourceUrl,
+	   SourceRetrievalDate 
+FROM Source ;
+
 -- SELECT_SOURCE_W_X_Y_Z
 SELECT SourceId,
 	   SourceTypeId,
@@ -293,3 +304,22 @@ UPDATE SourceLocationSubsetEntry
 SET SourceLocationSubsetEntryVerifiedPresentAt = MAX(IFNULL(SourceLocationSubsetEntryVerifiedPresentAt, ''), ?),
 	SourceLocationSubsetEntryVerifiedMissingAt = MAX(IFNULL(SourceLocationSubsetEntryVerifiedMissingAt, ''), ?)
 WHERE SourceLocationSubsetEntryId = ? ;
+
+-- SELECT_SOURCE_EXCERPT_TAGGING_WRAPPER_VALS_FOR_EXCERPT_ID_X
+SELECT mt.MediaTagValue,
+	   setag.SourceExcerptTaggingTaggedAt,
+	   setag.SourceExcerptTaggingUntaggedAt
+FROM SourceExcerptTagging setag
+JOIN MediaTag mt
+ON setag.MediaTagId = mt.MediaTagId
+WHERE setag.SourceExcerptId = ? ;
+
+-- SELECT_SOURCE_EXCERPTS_FOR_SOURCE_ID_X
+SELECT SourceExcerptId, 
+	   SourceId, 
+	   SourceExcerptValue, 
+	   SourceExcerptPages, 
+	   SourceExcerptBeginTime, 
+	   SourceExcerptEndTime 
+FROM SourceExcerpt 
+WHERE SourceId = ? ;

@@ -92,12 +92,12 @@ SELECT SourceId,
        SourceTag
 FROM Source 
 WHERE SourceTypeId = ? 
-AND TRIM(IFNULL(SourceTitle, '')) = TRIM(IFNULL(?, '')),
-AND TRIM(IFNULL(SourceAuthor, '')) = TRIM(IFNULL(?, '')),
-AND TRIM(IFNULL(SourceDirector, '')) = TRIM(IFNULL(?, '')),
-AND TRIM(IFNULL(SourceYear, '')) = TRIM(IFNULL(?, '')),
-AND TRIM(IFNULL(SourceUrl, '')) = TRIM(IFNULL(?, '')),
-AND TRIM(IFNULL(SourceRetrievalDate, '')) = TRIM(IFNULL(?, '')),
+AND TRIM(IFNULL(SourceTitle, '')) = TRIM(IFNULL(?, ''))
+AND TRIM(IFNULL(SourceAuthor, '')) = TRIM(IFNULL(?, ''))
+AND TRIM(IFNULL(SourceDirector, '')) = TRIM(IFNULL(?, ''))
+AND TRIM(IFNULL(SourceYear, '')) = TRIM(IFNULL(?, ''))
+AND TRIM(IFNULL(SourceUrl, '')) = TRIM(IFNULL(?, ''))
+AND TRIM(IFNULL(SourceRetrievalDate, '')) = TRIM(IFNULL(?, ''))
 AND TRIM(IFNULL(SourceTag, '')) = TRIM(IFNULL(?, ''));
 
 -- SELECT_SOURCE_BY_ID

@@ -66,20 +66,41 @@
 "FROM " + TABLE_SOURCE + " ; ";
 
 -- SELECT_SOURCE_W_X_Y_Z
-"SELECT " + NwdContract.COLUMN_SOURCE_ID + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_TYPE_ID + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_TITLE + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_AUTHOR + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_DIRECTOR + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_YEAR + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_URL + ", " + 
-"	    " + NwdContract.COLUMN_SOURCE_RETRIEVAL_DATE + ",  " +
-"	    " + NwdContract.COLUMN_SOURCE_TAG + "  " +
+"SELECT " + COLUMN_SOURCE_ID + ", " + 
+"	    " + COLUMN_SOURCE_TYPE_ID + ", " + 
+"	    " + COLUMN_SOURCE_TITLE + ", " + 
+"	    " + COLUMN_SOURCE_AUTHOR + ", " + 
+"	    " + COLUMN_SOURCE_DIRECTOR + ", " + 
+"	    " + COLUMN_SOURCE_YEAR + ", " + 
+"	    " + COLUMN_SOURCE_URL + ", " + 
+"	    " + COLUMN_SOURCE_RETRIEVAL_DATE + ",  " +
+"	    " + COLUMN_SOURCE_TAG + "  " +
 "FROM " + TABLE_SOURCE + " " +
 "WHERE " + COLUMN_SOURCE_TYPE_ID + " = ?  " +
 "AND TRIM(IFNULL(" + COLUMN_SOURCE_TITLE + ", '')) = TRIM(IFNULL(?, ''))  " +
 "AND TRIM(IFNULL(" + COLUMN_SOURCE_YEAR + ", '')) = TRIM(IFNULL(?, ''))  " +
 "AND TRIM(IFNULL(" + COLUMN_SOURCE_URL + ", '')) = TRIM(IFNULL(?, '')); " 
+
+
+-- SELECT_SOURCE_FOR_TID_TTL_AUT_DIR_YR_URL_RDT_TG
+"SELECT " + COLUMN_SOURCE_ID + ", " +
+"       " + COLUMN_SOURCE_TYPE_ID + ", " +
+"       " + COLUMN_SOURCE_TITLE + ", " +
+"       " + COLUMN_SOURCE_AUTHOR + ", " +
+"       " + COLUMN_SOURCE_DIRECTOR + ", " +
+"       " + COLUMN_SOURCE_YEAR + ", " +
+"       " + COLUMN_SOURCE_URL + ", " +
+"       " + COLUMN_SOURCE_RETRIEVAL_DATE + ", " +
+"       " + COLUMN_SOURCE_TAG + " " +
+"FROM " + TABLE_SOURCE + "  " +
+"WHERE " + COLUMN_SOURCE_TYPE_ID + " = ?  " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_TITLE + ", '')) = TRIM(IFNULL(?, '')), " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_AUTHOR + ", '')) = TRIM(IFNULL(?, '')), " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_DIRECTOR + ", '')) = TRIM(IFNULL(?, '')), " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_YEAR + ", '')) = TRIM(IFNULL(?, '')), " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_URL + ", '')) = TRIM(IFNULL(?, '')), " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_RETRIEVAL_DATE + ", '')) = TRIM(IFNULL(?, '')), " +
+"AND TRIM(IFNULL(" + COLUMN_SOURCE_TAG + ", '')) = TRIM(IFNULL(?, '')); "
 
 -- SELECT_SOURCE_BY_ID
 "SELECT " + NwdContract.COLUMN_SOURCE_ID + ", " + 

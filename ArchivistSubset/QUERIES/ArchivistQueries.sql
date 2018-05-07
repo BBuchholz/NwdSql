@@ -125,6 +125,19 @@ INSERT OR IGNORE INTO Source
 VALUES
 	(?,?,?,?,?,?,?);
 
+-- INSERT_SOURCE_TID_TTL_AUT_DIR_YR_URL_RDT_TG
+INSERT OR IGNORE INTO Source
+	(SourceTypeId,
+	 SourceTitle,
+	 SourceAuthor,
+	 SourceDirector,
+	 SourceYear,
+	 SourceUrl,
+	 SourceRetrievalDate,
+	 SourceTag)
+VALUES
+	(?,?,?,?,?,?,?,?);
+
 -- SELECT_EXCERPTS_WITH_TAGS_FOR_SOURCE_ID_X
 SELECT  sext.SourceExcerptTaggingId,
 		se.SourceExcerptId,
@@ -306,7 +319,7 @@ WHERE slse.SourceId = ?
 AND slse.SourceLocationSubsetEntryVerifiedPresentAt >= slse.SourceLocationSubsetEntryVerifiedMissingAt;
 
 -- INSERT_OR_IGNORE_INTO_SOURCE_LOCATION_SUBSET_ENTRY_VALUES_SUBSET_ID_SOURCE_ID_ENTRY_VALUE_X_Y_Z
-INSERT INTO SourceLocationSubsetEntry
+INSERT OR IGNORE INTO SourceLocationSubsetEntry
 	(SourceLocationSubsetId,
 	 SourceId,
 	 SourceLocationSubsetEntryValue)

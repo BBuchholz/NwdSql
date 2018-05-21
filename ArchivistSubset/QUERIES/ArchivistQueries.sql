@@ -173,6 +173,13 @@ SET SourceExcerptTaggingTaggedAt = MAX(IFNULL(SourceExcerptTaggingTaggedAt, ''),
 	SourceExcerptTaggingUntaggedAt = MAX(IFNULL(SourceExcerptTaggingUntaggedAt, ''), ?)
 WHERE SourceExcerptTaggingId = ? ;
 
+-- UPDATE_EXCERPT_TAGGING_TAGGED_UNTAGGED_WHERE_EXID_AND_TGID_W_X_Y_Z
+UPDATE SourceExcerptTagging 
+SET SourceExcerptTaggingTaggedAt = MAX(IFNULL(SourceExcerptTaggingTaggedAt, ''), ?),
+	SourceExcerptTaggingUntaggedAt = MAX(IFNULL(SourceExcerptTaggingUntaggedAt, ''), ?)
+WHERE SourceExcerptId = ? 
+AND MediaTagId = ? ;
+
 -- UPDATE_SOURCE_TAG_WHERE_SOURCE_ID
 UPDATE Source
 SET SourceTag = ? 
@@ -356,3 +363,16 @@ SELECT SourceExcerptId,
 	   SourceExcerptEndTime 
 FROM SourceExcerpt 
 WHERE SourceId = ? ;
+
+-- SELECT_ARCHIVIST_SOURCE_EXCERPT_TAGGINGS_FOR_EXID
+SELECT mt.MediaTagId,
+	   sext.SourceExcerptTaggingId,
+	   sext.SourceExcerptId,
+	   mt.MediaTagValue,
+	   sext.SourceExcerptTaggingTaggedAt,
+	   sext.SourceExcerptTaggingUntaggedAt
+FROM SourceExcerptTagging sext
+JOIN MediaTag mt 
+ON sext.MediaTagId = mt.MediaTagId
+WHERE sext.SourceExcerptId = ? ;
+

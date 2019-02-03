@@ -330,3 +330,15 @@
 "JOIN " + TABLE_MEDIA_DEVICE + " md " +
 "ON mdp." + COLUMN_MEDIA_DEVICE_ID + " = md." + COLUMN_MEDIA_DEVICE_ID + " " +
 "WHERE mp." + COLUMN_MEDIA_PATH_VALUE + " = ? ; " 
+
+
+-- SELECT_MEDIA_PATH_AND_HASH_WHERE_PATH_ENDS_WITH_X
+"SELECT  " + 
+"    mp." + COLUMN_MEDIA_PATH_VALUE + ", " + 
+"    m." + COLUMN_MEDIA_HASH + " " + 
+"FROM " + TABLE_MEDIA_PATH + " mp " + 
+"JOIN " + TABLE_MEDIA_DEVICE_PATH + " mdp  " + 
+"ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " + 
+"JOIN " + TABLE_MEDIA + " m " + 
+"ON m." + COLUMN_MEDIA_ID + " = mdp." + COLUMN_MEDIA_ID + " " + 
+"WHERE mp." + COLUMN_MEDIA_PATH_VALUE + " LIKE ? ; " + 

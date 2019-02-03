@@ -325,3 +325,14 @@ ON mp.MediaPathId = mdp.MediaPathId
 JOIN MediaDevice md
 ON mdp.MediaDeviceId = md.MediaDeviceId
 WHERE mp.MediaPathValue = ? ;
+
+-- SELECT_MEDIA_PATH_AND_HASH_WHERE_PATH_ENDS_WITH_X
+SELECT 
+    mp.MediaPathValue,
+    m.MediaHash
+FROM MediaPath mp
+JOIN MediaDevicePath mdp 
+ON mp.MediaPathId = mdp.MediaPathId
+JOIN Media m
+ON m.MediaId = mdp.MediaId
+WHERE mp.MediaPathValue LIKE ? ;

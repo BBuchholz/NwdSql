@@ -341,4 +341,4 @@
 "ON mp." + COLUMN_MEDIA_PATH_ID + " = mdp." + COLUMN_MEDIA_PATH_ID + " " + 
 "JOIN " + TABLE_MEDIA + " m " + 
 "ON m." + COLUMN_MEDIA_ID + " = mdp." + COLUMN_MEDIA_ID + " " + 
-"WHERE mp." + COLUMN_MEDIA_PATH_VALUE + " LIKE ? ; " + 
+"WHERE mp." + COLUMN_MEDIA_PATH_VALUE + " LIKE ? ; " 
